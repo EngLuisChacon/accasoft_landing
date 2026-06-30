@@ -1,0 +1,862 @@
+/* ==========================================================================
+   SISTEMA DE DISEÑO CORE - ACCASOFT ERP
+   ========================================================================== */
+:root {
+  --bg-pure: #ffffff;
+  --bg-soft: #F0FFFF;
+  --text-dark: #0a2540;
+  --text-muted: #637381;
+  --brand-blue: #006bff;
+  --brand-blue-hover: #0056cc;
+  --border-light: #e6ebf1;
+  --radius-standard: 8px;
+  --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
+  --transition-fast: all 0.25s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-pure);
+  color: var(--text-dark);
+  font-family: var(--font-stack);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   MEGA COMPLIANCE BANNER
+   ========================================================================== */
+.mega-compliance-banner {
+  background: #040e1a;
+  color: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 120;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 0;
+
+  & .banner-grid-layout { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  & .banner-status-title { display: flex; align-items: center; gap: 10px; & p { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; color: #9ab0cc; } }
+  & .pulse-icon { width: 8px; height: 8px; background-color: #00d46e; border-radius: 50%; box-shadow: 0 0 0 0 rgba(0, 212, 110, 0.7); animation: pulseGlow 2s infinite; }
+  & .compliance-pills-wrapper { display: flex; gap: 14px; }
+  
+  & .compliance-pill-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 6px 14px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition-fast);
+
+    &:hover { background: rgba(255, 255, 255, 0.08); border-color: var(--brand-blue); }
+    & .country-name { font-size: 12px; font-weight: 700; letter-spacing: 0.02em; color: #ffffff; }
+    & .law-badge { background: var(--brand-blue); color: #ffffff; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; }
+    & .status-dot-active { width: 6px; height: 6px; background: #00d46e; border-radius: 50%; }
+  }
+
+  & .flag-indicator {
+    width: 16px; height: 11px; border-radius: 2px; display: inline-block;
+    &.col { background: linear-gradient(#fcd116 50%, #003893 50%, #003893 75%, #ce1126 75%); }
+    &.ven { background: linear-gradient(#ffcc00 33%, #00247d 33%, #00247d 66%, #cf142b 66%); }
+  }
+  & .banner-legal-note { font-size: 12px; color: #637381; font-weight: 500; }
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 212, 110, 0.7); }
+  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(0, 212, 110, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 212, 110, 0); }
+}
+
+/* ==========================================================================
+   NAVBAR REAJUSTADA
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  top: 55px;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: #1e3a8a;
+  border-bottom: 1px solid var(--border-light);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: var(--transition-fast);
+
+  & .nav-wrapper { display: flex; justify-content: space-between; align-items: center; height: 72px; }
+  & .logo .logo-img { height: 50px; width: auto; border-color: #fff;}
+  & .nav-menu {
+    display: flex; gap: 32px; list-style: none;
+    & a { color: #fff; text-decoration: none; font-size: 15px; font-weight: 500; transition: var(--transition-fast); &:hover { color: var(--brand-blue); } }
+  }
+  & .nav-actions {
+    display: flex; align-items: center; gap: 20px;
+    & .btn-text { color: var(--text-dark); text-decoration: none; font-size: 15px; font-weight: 500; }
+    & .btn-cta-nav { background: var(--brand-blue); color: #fff; padding: 10px 20px; border-radius: var(--radius-standard); font-size: 14px; font-weight: 600; text-decoration: none; transition: var(--transition-fast); &:hover { background: var(--brand-blue-hover); } }
+  }
+}
+
+/* ==========================================================================
+   HERO LAYOUT
+   ========================================================================== */
+.hero-split {
+  padding-top: 240px;
+  padding-bottom: 90px;
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.hero-text-block {
+  & h1 { font-size: 52px; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; color: var(--text-dark); margin-bottom: 24px; }
+  & p { font-size: 20px; color: var(--text-muted); line-height: 1.5; margin-bottom: 36px; }
+  & .hero-subtext { font-size: 13px; color: var(--text-muted); margin-top: 12px; }
+}
+
+.hero-form {
+  display: flex; gap: 12px; max-width: 520px;
+  & input { flex: 1; padding: 14px 20px; border: 1px solid #adbdcc; border-radius: var(--radius-standard); font-size: 16px; outline: none; transition: var(--transition-fast); &:focus { border-color: var(--brand-blue); box-shadow: 0 0 0 3px rgba(0, 107, 255, 0.15); } }
+  & .btn-submit { background: var(--brand-blue); color: white; border: none; padding: 14px 28px; border-radius: var(--radius-standard); font-size: 16px; font-weight: 600; cursor: pointer; transition: var(--transition-fast); &:hover { background: var(--brand-blue-hover); } }
+}
+
+/* ==========================================================================
+   HERO VISUAL BLOCK & HALO FLUIDO (AURORA GLOW)
+   ========================================================================== */
+.hero-visual-block {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 520px;
+}
+
+/* El Halo Orgánico de Fondo */
+.ambient-aurora-glow {
+  position: absolute;
+  width: 460px;
+  height: 440px;
+  top: 15%;
+  left: 10%;
+  /* Mezcla translúcida de azul tecnológico y cyan etéreo */
+  background: linear-gradient(135deg, rgba(0, 107, 255, 0.22) 0%, rgba(0, 212, 214, 0.18) 100%);
+  border-radius: 43% 57% 62% 38% / 45% 48% 52% 55%; /* Bordes asimétricos iniciales */
+  filter: blur(65px); /* Desenfoque extremo para suavizar el halo */
+  z-index: 1; /* Detrás de las pestañas y los mockups */
+  pointer-events: none; /* No interfiere con los clicks */
+  will-change: transform, border-radius;
+  animation: fluidCloudMotion 10s ease-in-out infinite alternate;
+}
+
+/* Animación líquida de la nube deforme (Usa transformaciones óptimas para GPU) */
+@keyframes fluidCloudMotion {
+  0% {
+    transform: scale(1) translate(0px, 0px) rotate(0deg);
+    border-radius: 43% 57% 62% 38% / 45% 48% 52% 55%;
+  }
+  33% {
+    transform: scale(1.12) translate(15px, -20px) rotate(45deg);
+    border-radius: 60% 40% 55% 45% / 50% 65% 35% 50%;
+  }
+  66% {
+    transform: scale(0.95) translate(-25px, 10px) rotate(-30deg);
+    border-radius: 40% 60% 35% 65% / 60% 40% 60% 40%;
+  }
+  100% {
+    transform: scale(1.05) translate(5px, -5px) rotate(15deg);
+    border-radius: 52% 48% 68% 32% / 40% 52% 48% 60%;
+  }
+}
+
+/* ESTRUCTURAS DEL CARRUSEL DE MOCKUPS */
+.erp-tabs-controller {
+  display: flex;
+  background: var(--bg-soft);
+  padding: 6px;
+  border-radius: 30px;
+  border: 1px solid var(--border-light);
+  margin-bottom: 40px;
+  z-index: 50; /* Por encima del halo */
+  gap: 4px;
+}
+
+.tab-trigger {
+  background: transparent;
+  border: none;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 20px;
+  transition: var(--transition-fast);
+  &.active, &:hover { background: #ffffff; color: var(--brand-blue); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04); }
+}
+
+.scene-3d-global { position: relative; width: 100%; max-width: 520px; height: 350px; perspective: 2000px; transform-style: preserve-3d; z-index: 40; }
+.carousel-3d-wrapper { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
+
+.product-mockup {
+  position: absolute;
+  top: 0; left: 0;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(220, 225, 235, 0.95);
+  overflow: visible;
+  height: 100%; width: 100%;
+  display: flex; flex-direction: column;
+  backface-visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.erp-angle-facturacion { box-shadow: -1px 1px 0px #e6ebf1, -2px 2px 0px #dce2ea, -3px 3px 20px rgba(10, 37, 64, 0.05); transform: rotateX(12deg) rotateY(-8deg) rotateZ(2deg) translateY(0px); }
+.erp-angle-facturacion.active { opacity: 1; pointer-events: auto; animation: floatFacturacion 4.5s ease-in-out infinite; }
+.erp-angle-inventario { box-shadow: 0px 1px 0px #e6ebf1, 0px 2px 0px #dce2ea, 0px 4px 25px rgba(10, 37, 64, 0.06); transform: rotateX(14deg) rotateY(0deg) rotateZ(0deg) translateY(0px); }
+.erp-angle-inventario.active { opacity: 1; pointer-events: auto; animation: floatInventario 5.5s ease-in-out infinite; }
+.erp-angle-contabilidad { box-shadow: 1px 1px 0px #e6ebf1, 2px 2px 0px #dce2ea, 3px 3px 20px rgba(10, 37, 64, 0.05); transform: rotateX(12deg) rotateY(8deg) rotateZ(-2deg) translateY(0px); }
+.erp-angle-contabilidad.active { opacity: 1; pointer-events: auto; animation: floatContabilidad 4s ease-in-out infinite; }
+
+.mockup-header {
+  background: #f8fafd; padding: 10px 16px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; border-radius: 12px 12px 0 0; gap: 6px;
+  & .dot { width: 8px; height: 8px; background: #e6ebf1; border-radius: 50%; }
+  & .mockup-title-tag { font-size: 11px; font-weight: 600; color: var(--text-muted); margin-left: 12px; }
+}
+.mockup-body.image-container { padding: 0; flex: 1; background: #ffffff; position: relative; overflow: hidden; border-radius: 0 0 12px 12px; }
+.mockup-img { width: 100%; height: 100%; object-fit: cover; object-position: top left; display: block; image-rendering: -webkit-optimize-contrast; transform: translateZ(0); }
+
+.mockup-shadow { position: absolute; bottom: -30px; height: 20px; background: radial-gradient(ellipse at center, rgba(10, 37, 64, 0.14) 0%, transparent 75%); pointer-events: none; z-index: -1; }
+.shadow-facturacion { width: 90%; left: 8%; transform: translateZ(-40px); animation: shadowFacturacion 4.5s ease-in-out infinite; }
+.shadow-inventario { width: 94%; left: 3%; transform: translateZ(-40px); animation: shadowInventario 5.5s ease-in-out infinite; }
+.shadow-contabilidad { width: 90%; left: 2%; transform: translateZ(-40px); animation: shadowContabilidad 4s ease-in-out infinite; }
+
+@keyframes floatFacturacion { 0%, 100% { transform: rotateX(12deg) rotateY(-8deg) rotateZ(2deg) translateY(0px); } 50% { transform: rotateX(11deg) rotateY(-7deg) rotateZ(1.5deg) translateY(-14px) translateZ(15px); } }
+@keyframes shadowFacturacion { 0%, 100% { transform: translateZ(-40px) scale(1); opacity: 1; } 50% { transform: translateZ(-40px) scale(0.88); opacity: 0.5; } }
+@keyframes floatInventario { 0%, 100% { transform: rotateX(14deg) rotateY(0deg) rotateZ(0deg) translateY(0px); } 50% { transform: rotateX(12deg) rotateY(0deg) rotateZ(0deg) translateY(-20px) translateZ(25px); } }
+@keyframes shadowInventario { 0%, 100% { transform: translateZ(-40px) scale(1); opacity: 1; } 50% { transform: translateZ(-40px) scale(0.82); opacity: 0.4; } }
+@keyframes floatContabilidad { 0%, 100% { transform: rotateX(12deg) rotateY(8deg) rotateZ(-2deg) translateY(0px); } 50% { transform: rotateX(13deg) rotateY(9deg) rotateZ(-2.5deg) translateY(-12px) translateZ(10px); } }
+@keyframes shadowContabilidad { 0%, 100% { transform: translateZ(-40px) scale(1); opacity: 1; } 50% { transform: translateZ(-40px) scale(0.9); opacity: 0.6; } }
+
+/* VALIDACIÓN SOCIAL INFERIOR */
+.trust-section {
+    border-radius: 20px;
+  padding: 60px 24px;  text-align: center; background: linear-gradient(90deg, #1e3a8a, #a3e635);
+  & h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.06em; color: #fff; margin-bottom: 32px; font-weight: 600; }
+  & .logo-grid { display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 32px; & .trust-logo { font-size: 16px; font-weight: 700; color: #fff; } }
+}
+
+/* RESPONSIVE CONTROL */
+@media (max-width: 960px) {
+  .mega-compliance-banner { position: relative; padding: 16px 0; }
+  .site-header { top: 0; position: relative; }
+  .hero-split { padding-top: 40px; grid-template-columns: 1fr; gap: 48px; text-align: center; }
+  .hero-form { margin: 0 auto; }
+  .site-header .nav-menu, .site-header .nav-actions .btn-text { display: none; }
+  
+  .mega-compliance-banner .banner-grid-layout { flex-direction: column; justify-content: center; text-align: center; }
+  .mega-compliance-banner .compliance-pills-wrapper { flex-direction: column; width: 100%; }
+  
+  .hero-visual-block { height: auto; }
+  .ambient-aurora-glow { width: 280px; height: 280px; left: 15%; top: 20%; filter: blur(45px); }
+  .scene-3d-global { perspective: none; height: 280px; max-width: 100%; }
+  .product-mockup { position: relative; display: none; transform: none !important; animation: none !important; opacity: 0; &.active { display: flex; opacity: 1; } }
+  .mockup-shadow { display: none !important; }
+}
+
+
+
+
+/* ==========================================================================
+   SECCIÓN DE MÓDULOS ERP / SOFTWARE (DISEÑO POLICROMÁTICO PREMIUM)
+   ========================================================================== */
+.grid-modules-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+  padding: 80px 24px;
+  background-color: var(--bg-pure);
+}
+
+.module-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+  will-change: transform, box-shadow;
+}
+
+/* --- EFECTOS HOVER DINÁMICOS BASADOS EN LA VARIABLE DE COLOR --- */
+.module-card:hover {
+  transform: translateY(-8px) scale(1.025);
+  /* El borde se ilumina sutilmente con el color específico del módulo */
+  border-color: var(--module-color);
+  box-shadow: 0 24px 48px rgba(10, 37, 64, 0.06);
+}
+
+.module-card:hover .module-icon-wrapper {
+  animation: iconBreathEffect 2.2s ease-in-out infinite;
+  /* Fondo tintado suave con el color dinámico */
+  background: rgba(from var(--module-color) r g b / 0.12); 
+  color: var(--module-color);
+}
+
+.module-card:hover .module-link {
+  color: var(--module-color);
+}
+
+.module-card:hover .module-link .arrow {
+  transform: translateX(6px);
+}
+
+/* --- ELEMENTOS INTERNOS INTERACTIVOS --- */
+.module-icon-wrapper {
+  /* Si el navegador no soporta color relativo, cae en estos defaults transparentes */
+  background: var(--bg-soft);
+  color: var(--module-color);
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  transition: var(--transition-fast);
+  will-change: transform, box-shadow;
+}
+
+.module-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.module-card p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 28px;
+  flex: 1;
+}
+
+.module-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark); /* Color base neutro para no saturar visualmente */
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.module-link .arrow {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+}
+
+/* --- ANIMACIÓN BREATH CONFIGURADA CON LA VARIABLE --- */
+@keyframes iconBreathEffect {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(from var(--module-color) r g b / 0.3);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 10px rgba(from var(--module-color) r g b / 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(from var(--module-color) r g b / 0);
+  }
+}
+
+/* RESPONSIVE CONTROL */
+@media (max-width: 768px) {
+  .grid-modules-container { grid-template-columns: 1fr; gap: 24px; padding: 40px 24px; }
+  .module-card { padding: 28px; }
+  .module-card:hover { transform: translateY(-4px); }
+  .module-card:hover .module-icon-wrapper { animation: none; }
+}
+
+/* ==========================================================================
+   SECCIÓN FEATURES SPLIT (MARKETING & LOGÍSTICA)
+   ========================================================================== */
+.features-split-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding: 60px 24px;
+  background-color: var(--bg-pure);
+}
+
+.split-feature-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+  will-change: transform, box-shadow;
+}
+
+.split-feature-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: var(--feature-color);
+  box-shadow: 0 24px 48px rgba(10, 37, 64, 0.05);
+}
+
+.split-feature-card:hover .feature-icon-wrapper {
+  animation: featureBreath 2.2s ease-in-out infinite;
+  background: rgba(from var(--feature-color) r g b / 0.1);
+  color: var(--feature-color);
+}
+
+.split-feature-card:hover .feature-link {
+  color: var(--feature-color);
+}
+
+.split-feature-card:hover .feature-link .arrow {
+  transform: translateX(6px);
+}
+
+.feature-icon-wrapper {
+  background: var(--bg-soft);
+  color: var(--text-dark);
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 24px;
+  transition: var(--transition-fast);
+}
+
+.split-feature-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+
+.split-feature-card p {
+  font-size: 16px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 32px;
+  flex: 1;
+}
+
+.feature-link {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-fast);
+}
+
+.feature-link .arrow {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
+}
+
+@keyframes featureBreath {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(from var(--feature-color) r g b / 0.2); }
+  50% { transform: scale(1.06); box-shadow: 0 0 0 8px rgba(from var(--feature-color) r g b / 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(from var(--feature-color) r g b / 0); }
+}
+
+/* ==========================================================================
+   ALLIANCE & LOGOS TRUST SECTION (CONVENIOS)
+   ========================================================================== */
+.alliance-trust-section {
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.alliance-header {
+  max-width: 650px;
+  margin: 0 auto 48px auto;
+  
+  & .alliance-tagline {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: var(--brand-blue);
+    display: block;
+    margin-bottom: 12px;
+  }
+  
+  & h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  
+  & p {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+}
+
+/* Grid de logos optimizada */
+.alliance-logos-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.alliance-logo-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  padding: 20px 40px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 90px;
+  width: 220px;
+  transition: var(--transition-fast);
+
+  & img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    /* Efecto corporativo: Blanco y negro suavizado por defecto */
+    filter: grayscale(100%) opacity(60%);
+    transition: filter 0.3s ease;
+  }
+
+  /* Al pasar el ratón, el logo se ilumina y recupera su identidad */
+  &:hover {
+    border-color: #adbdcc;
+    box-shadow: 0 10px 25px rgba(10, 37, 64, 0.04);
+    transform: translateY(-2px);
+    
+    & img {
+      filter: grayscale(0%) opacity(100%);
+    }
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .features-split-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 40px 24px;
+  }
+  .split-feature-card { padding: 32px; }
+  .alliance-trust-section { padding: 50px 24px; }
+  .alliance-header h2 { font-size: 26px; }
+  .alliance-logos-grid { gap: 16px; }
+  .alliance-logo-card { width: 100%; max-width: 280px; height: 80px; padding: 16px; }
+}
+
+/* ==========================================================================
+   FOOTER ARQUITECTÓNICO PREMIUM
+   ========================================================================== */
+.site-footer {
+  background-color: #0a2540; /* El azul noche profundo del sistema de diseño */
+  color: #ffffff;
+  padding-top: 80px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: var(--font-stack);
+}
+
+.footer-grid-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr 0.9fr 0.9fr;
+  gap: 64px;
+  padding-bottom: 60px;
+}
+
+/* Columna de Marca */
+.footer-brand-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  & .footer-logo .footer-logo-img {
+    height: 50px;
+    width: auto;
+    margin-bottom: 24px;
+    /* Si el logo es oscuro, este filtro lo vuelve blanco nítido para el fondo oscuro */
+    filter: brightness(0) invert(1); 
+  }
+
+  & .brand-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #adbdcc; /* Texto secundario legible sobre oscuro */
+    margin-bottom: 28px;
+  }
+}
+
+/* Estado de Cumplimiento Técnico Integrado */
+.footer-compliance-status {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  & .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    & .dot-live {
+      width: 6px;
+      height: 6px;
+      background-color: #00d46e;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0, 212, 110, 0.4);
+    }
+    
+    & .text {
+      font-size: 12px;
+      font-weight: 600;
+      color: #9ab0cc;
+      letter-spacing: 0.02em;
+    }
+  }
+}
+
+/* Columnas de Enlaces */
+.footer-links-column {
+  & h4 {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+    margin-bottom: 24px;
+  }
+
+  & ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  & ul a {
+    font-size: 14px;
+    color: #adbdcc;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+
+    /* Efecto micro-interactivo al pasar el ratón */
+    &:hover {
+      color: #ffffff;
+      transform: translateX(4px);
+    }
+  }
+}
+
+/* Contenedor de Redes Sociales */
+.footer-social-wrapper {
+  display: flex;
+  gap: 14px;
+  margin-top: 28px;
+
+  & .social-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #adbdcc;
+    font-size: 14px;
+    text-decoration: none;
+    transition: var(--transition-fast);
+
+    &:hover {
+      background: var(--brand-blue);
+      border-color: var(--brand-blue);
+      color: #ffffff;
+      transform: translateY(-3px);
+    }
+  }
+}
+
+/* ==========================================================================
+   BARRA LEGAL INFERIOR
+   ========================================================================== */
+.footer-legal-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 24px 0;
+  background-color: #071d33; /* Un tono ligeramente más oscuro para contrastar */
+}
+
+.legal-bar-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  & .copyright {
+    font-size: 13px;
+    color: #637381;
+  }
+}
+
+.legal-links {
+  display: flex;
+  gap: 24px;
+
+  & a {
+    font-size: 13px;
+    color: #637381;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #adbdcc;
+    }
+  }
+}
+
+/* CONTROL RESPONSIVO DEL FOOTER */
+@media (max-width: 960px) {
+  .footer-grid-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 580px) {
+  .site-footer {
+    padding-top: 50px;
+  }
+  .footer-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-bottom: 40px;
+  }
+  .legal-bar-wrapper {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .legal-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* EFECTO DE GRADIENTE DINÁMICO PARA TRUST SECTION */
+.trust-section {
+  position: relative;
+  padding: 80px 24px;
+  background: linear-gradient(90deg, #1e3a8a, #4f46e5, #a3e635);
+  background-size: 300% 300%;
+  animation: gradientFlow 10s ease infinite;
+  border-radius: 20px;
+  margin-top: 60px;
+  color: #ffffff; /* Asegura contraste sobre el fondo */
+}
+
+/* Animación de flujo infinito */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Ajuste de legibilidad para el texto dentro de la sección animada */
+.trust-section h2 {
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.trust-logo {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  font-weight: 600;
+}
+
+.modal-overlay {
+  display: none; /* Oculto por defecto */
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(10, 37, 64, 0.8);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.modal-content {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 450px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.close-modal {
+  position: absolute; top: 15px; right: 20px;
+  font-size: 2rem; cursor: pointer; border: none; background: none;
+}

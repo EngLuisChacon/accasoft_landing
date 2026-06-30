@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accasoft | Ecosistema ERP Neo-Minimalista</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1d1d1f;
+            --gray: #86868b;
+            --accent: #006bff;
+            --glass: rgba(255, 255, 255, 0.85);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            background: var(--bg); 
+            color: var(--text); 
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Hero Minimalista */
+        .hero { padding: 180px 0 100px; text-align: center; }
+        .hero h1 { font-size: 5rem; font-weight: 700; letter-spacing: -0.04em; margin-bottom: 20px; }
+        .hero p { font-size: 1.5rem; color: var(--gray); max-width: 600px; margin: 0 auto 40px; }
+        
+        /* Imagen con efecto flotante */
+        .hero-img { 
+                    width: 100%; 
+                    max-width: 900px; /* Controla el ancho total */
+                    aspect-ratio: 16 / 9; /* Fuerza el formato 16:9 */
+                    object-fit: cover; /* Asegura que la imagen no se deforme */
+                    border-radius: 24px; 
+                    animation: float 6s ease-in-out infinite;
+                    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+                    margin: 0 auto; /* Centrado */
+                }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        /* Grid Neo-Minimalista */
+        .features { padding: 100px 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .card { 
+            background: #f5f5f7; padding: 40px; border-radius: 24px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card:hover { transform: translateY(-10px); background: #e8e8ed; }
+        .card i { font-size: 1.5rem; margin-bottom: 20px; color: var(--accent); }
+
+        /*Seccion Beneficios*/
+        .benefits-card-float {
+            background: #ffffff;
+            padding: 60px;
+            border-radius: 30px;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Efecto Hover con Gradiente */
+        .benefits-card-float:hover {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+            box-shadow: 0 40px 80px rgba(0, 96, 255, 0.15);
+            border-color: var(--accent);
+        }
+        
+        .benefits-list {
+            list-style: none;
+            margin-top: 30px;
+        }
+        
+        .benefits-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 1.1rem;
+            color: #444;
+        }
+        
+        .benefits-list li::before {
+            content: "✓";
+            color: var(--accent);
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        .dark-card {
+            background: #111827; /* Gris muy oscuro, casi negro */
+            color: #ffffff;
+            padding: 60px;
+            border-radius: 30px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        /* Efecto Hover: Gradiente sutil azul oscuro */
+        .dark-card:hover {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .dark-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1.1rem;
+            color: #e5e7eb; /* Gris claro para lectura perfecta */
+        }
+        
+        .dark-list li::before {
+            content: "✓";
+            color: #a3e635; /* El verde lima resalta increíble sobre el oscuro */
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        /* Sección de Casos de Uso */
+        /* --- Sección Casos de Uso (Bento Grid) --- */
+        
+        /* Contenedor principal que alinea título y grid */
+        .bento-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+        
+        /* Encabezado de sección alineado */
+        .bento-header {
+            margin-bottom: 50px;
+        }
+        
+        .bento-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text);
+        }
+        
+        .bento-header p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        
+        /* El Bento Grid 2x2 */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        
+        /* Tarjeta con imagen de fondo y sombra dinámica */
+        .visual-card {
+            height: 350px;
+            border-radius: 32px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            /* Sombra profunda inicial */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+        }
+        
+        /* Hover: La sombra desaparece y la tarjeta sube */
+        .visual-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transform: translateY(-8px);
+        }
+        
+        /* Overlay de texto integrado */
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+            color: #ffffff;
+        }
+        
+        .overlay h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .overlay p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+        }
+        
+        /* Responsividad: Se vuelve una sola columna en móviles */
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+            .visual-card {
+                height: 300px;
+            }
+        }
+        /* --- RESPONSIVE DESIGN --- */
+        
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3.5rem; }
+            .features { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 768px) {
+            /* Ajuste de tipografía móvil */
+            .hero { padding: 100px 0 60px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            
+            /* Apilar grid de funcionalidades */
+            .features { grid-template-columns: 1fr; gap: 20px; }
+            
+            /* Navbar móvil - Ocultar menú y ajustar logo */
+            .nav-menu { display: none; } /* Nota: Para un menú real se necesitaría JS */
+            
+            /* Ajuste de las tarjetas de beneficios */
+            .benefits-card-float { padding: 30px; }
+            
+            /* Bento Grid */
+            .bento-grid { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .btn-cta-nav { padding: 8px 16px; font-size: 0.8rem; }
+        }
+
+        /* Contenedor del fondo animado tipo "Aura" */
+        .aura-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #ffffff;
+            overflow: hidden;
+        }
+        
+        .aura-shape {
+            position: absolute;
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(0, 107, 255, 0.4) 0%, transparent 70%);
+            animation: rotate 15s linear infinite;
+            top: -20%;
+            left: -20%;
+            mix-blend-mode: multiply; /* Esto hace que los colores se mezclen intensamente */
+        }
+        
+        .aura-shape.secondary {
+            background: radial-gradient(circle, rgba(163, 230, 53, 0.3) 0%, transparent 70%);
+            animation: rotate 20s linear infinite reverse;
+            top: 20%;
+            left: 30%;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        /* --- NAVBAR PREMIUM ESTILOS --- */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            background: linear-gradient(180deg, #121212, rgba(150, 150, 150, 0.5) 100%);
+            backdrop-filter: blur(20px);
+            
+        }
+        
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-img { height: 32px; width: auto; }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover { color: var(--accent); }
+        
+        .btn-cta-nav {
+            background: var(--text);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.3s, background 0.3s;
+        }
+        
+        .btn-cta-nav:hover {
+            transform: translateY(-2px);
+            background: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="aura-bg">
+        <div class="aura-shape"></div>
+        <div class="aura-shape secondary"></div>
+    </div>
+    <!-- NAVBAR PREMIUM STYLE -->
+    <header class="site-header">
+      <div class="container nav-wrapper">
+        <a href="/" class="logo" aria-label="Accasoft Inicio">
+          <img src="img/logo1.png" alt="Accasoft Logo" class="logo-img">
+        </a>
+        <nav aria-label="Navegación principal">
+          <ul class="nav-menu">
+            <li><a href="#modulos">Módulos ERP</a></li>
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#infraestructura">Infraestructura</a></li>
+          </ul>
+        </nav>
+        <div class="nav-actions">
+          <a href="#contacto" class="btn-cta-nav">Solicitar Información</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <h1>Producción sin fricción.</h1>
+            <p>Optimización total desde la planificación hasta la entrega. Fácil y Rápido.</p>
+            <img src="https://images.unsplash.com/photo-1565954786194-d22abeaac3ae?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=1200&auto=format" alt="ERP" class="hero-img">
+        </section>
+
+        <section class="features">
+            <div class="card" id="card-1">
+                <i class="fas fa-microchip"></i>
+                <h3>Visualización Gráfica</h3>
+                <p>Visualiza en tiempo real el estado de producción y las operaciones mediante diagramas de Gantt y gráficos detallados.</p>
+            </div>
+            <div class="card" id="card-2">
+                <i class="fas fa-boxes"></i>
+                <h3>Gestión Integral de Inventarios</h3>
+                <p>Controla materias primas, productos en proceso y terminados. Gestiona almacenes con soporte para múltiples ubicaciones.</p>
+            </div>
+            <div class="card" id="card-3">
+                <i class="fas fa-chart-line"></i>
+                <h3>Cálculo de Costos</h3>
+                <p>Obtén el costo exacto de cada producto o lote con cálculos automatizados basados en tus operaciones.</p>
+            </div>
+            <div class="card" id="card-1">
+                <i class="fa-solid fa-compass-drafting"></i>
+                <h3>Escalado y Diseño</h3>
+                <p>Automatiza el escalado de moldes, optimiza el uso de materiales y reduce desperdicios en el proceso productivo.</p>
+            </div>
+            <div class="card" id="card-2">
+                <i class="fa-solid fa-industry"></i>
+                <h3>Producción Grupal</h3>
+                <p>Organiza la producción por grupos o equipos, mejorando la eficiencia y reduciendo tiempos de entrega.</p>
+            </div>
+            <div class="card" id="card-3">
+                <i class="fa-solid fa-mobile-screen"></i>
+                <h3>Compatibilidad con Android</h3>
+                <p>Gestiona tareas desde tu dispositivo Android con la lectura de códigos QR y de barras para mayor precisión.</p>
+            </div>
+        </section>
+        <section class="container" style="padding: 80px 0;">
+            <!-- Clase 'dark-card' aplicada para el contraste -->
+            <div class="benefits-card-float dark-card">
+                <h2 style="color: #ffffff;"><i class="fas fa-star" style="color: #a3e635; margin-right: 10px;"></i> Beneficios del Software</h2>
+                <ul class="benefits-list dark-list">
+                    <li>Incrementa la productividad con automatización de procesos repetitivos.</li>
+                    <li>Reduce costos operativos al optimizar el uso de recursos y minimizar desperdicios.</li>
+                    <li>Mejora la toma de decisiones con informes detallados de costos, inventarios y productividad.</li>
+                    <li>Aumenta la satisfacción del cliente con entregas más rápidas y procesos eficientes.</li>
+                    <li>Personaliza los procesos para adaptarse a las necesidades específicas de tu empresa.</li>
+                </ul>
+            </div>
+        </section>
+        <section class="container" style="padding: 80px 0;">
+            <!-- Título integrado dentro del bloque del grid -->
+            <div style="max-width: 900px; margin: 0 auto 50px; text-align: center;">
+                <h2 style="font-size: 2.5rem; letter-spacing: -0.02em;">Casos de Uso</h2>
+                <p style="color: #000; margin-top: 10px;">Aplicaciones industriales optimizadas con Accasoft.</p>
+            </div>
+        
+            <div class="bento-grid">
+                <div class="visual-card" style="background-image: url('https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800');">
+                    <div class="overlay">
+                        <h3>Industria del Calzado</h3>
+                        <p>De la suela al producto terminado.</p>
+                    </div>
+                </div>
+                <div class="visual-card" style="background-image: url('https://images.unsplash.com/photo-1675176785803-bffbbb0cd2f4?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=800');">
+                    <div class="overlay">
+                        <h3>Textil y Confección</h3>
+                        <p>Gestión de patrones y calidad.</p>
+                    </div>
+                </div>
+                <div class="visual-card" style="background-image: url('https://plus.unsplash.com/premium_photo-1683120796013-f2f18451a907?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=800');">
+                    <div class="overlay">
+                        <h3>Empaque y Embalaje</h3>
+                        <p>Etiquetado y trazabilidad.</p>
+                    </div>
+                </div>
+                <div class="visual-card" style="background-image: url('https://images.unsplash.com/photo-1536939459926-301728717817?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=800');">
+                    <div class="overlay">
+                        <h3>Fabricación de Plásticos</h3>
+                        <p>Producción e inyección precisa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Efecto Parallax / Movimiento suave al pasar el mouse por las cards
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                card.style.transform = `perspective(1000px) rotateY(${x / 25}deg) rotateX(${-y / 25}deg) translateY(-10px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px)`;
+            });
+        });
+    </script>
+</body>
+</html>

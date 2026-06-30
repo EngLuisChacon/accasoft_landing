@@ -1,0 +1,933 @@
+:root {
+    --bg: #0f172a; 
+    --bg-alt: #1e293b;
+    --text: #f1f5f9; 
+}
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.5s ease, color 0.5s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+header {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+}
+/* Modo Claro */
+body.light-mode {
+    --bg: #f7f2fa;
+    --text: #000;
+}
+/* Partículas */
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+#particles-js canvas {
+    display: block;
+}
+body.light-mode #particles-js canvas {
+    filter: invert(1);
+}
+/* Aura */
+.aura {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw; 
+        height: 80vw;
+        max-width: 800px;
+        max-height: 800px;
+        filter: blur(80px);
+    background: radial-gradient(
+        circle,
+        rgba(59, 130, 246, 0.2) 0%,
+        transparent 60%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Navbar glass effect */
+.glass-nav {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Modo claro para el navbar */
+body.light-mode .glass-nav {
+    background: rgba(247, 242, 250, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .glass-nav a {
+    color: #000;
+}
+
+/* Enlaces del nav */
+.glass-nav a {
+    color: #f1f5f9;
+    text-decoration: none;
+}
+/* Toggle Switch */
+#toggle-circle {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animaciones */
+.floating {
+    animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.fade-in-up {
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ajustes de contraste para modo claro */
+body.light-mode .text-gray-400 {
+    color: #666;
+}
+
+/* Títulos y textos destacados en modo claro */
+body.light-mode .text-\[#9ccb48\] {
+    color: #000000;
+}
+
+body.light-mode a:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* Glow para Albaranes */
+.aura-glow {
+    animation: glow-pulse 4s infinite alternate;
+}
+
+@keyframes glow-pulse {
+    from {
+        opacity: 0.3;
+        transform: scale(0.8) translate(-50%, -50%);
+    }
+    to {
+        opacity: 0.6;
+        transform: scale(1.2) translate(-50%, -50%);
+    }
+}
+
+/* Efecto 3D para tarjetas de servicios */
+.service-card-3d {
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.service-card-3d:hover {
+    transform: translateY(-15px) rotateX(10deg) rotateY(5deg);
+    border-color: rgba(156, 203, 72, 0.5);
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(156, 203, 72, 0.2);
+}
+
+body.light-mode .service-card-3d h4 {
+    color: #000000;
+}
+
+body.light-mode .service-card-3d p {
+    color: #374151;
+}
+
+body.light-mode #albaranes-section {
+    background: linear-gradient(180deg, #fff 0%,  #f7f2fa 100%);
+}
+
+body.light-mode #albaranes-section h3 {
+    color: #4b5563;
+}
+/* Limpieza absoluta para las tarjetas de certificación */
+.cert-card {
+    background-color: #0f172a; /* Color oscuro por defecto */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.cert-card-img-wrapper {
+    width: 100%;
+    height: 160px; /* Altura fija para que todas las cards midan igual */
+    background-color: #ffffff;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+/* Forzamos a que las imágenes no intenten ocupar el espacio de la caja */
+.cert-card img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+}
+img-container {
+    background-color: #ffffff; /* Fondo blanco para logos con fondo transparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Asegurar que el modo claro no rompa los colores del texto */
+body.light-mode .cert-card h4 {
+    color: #000000 !important;
+}
+body.light-mode .cert-card p {
+    color: #4b5563 !important;
+}
+
+body.light-mode .cert-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+}
+/* Efecto de texto con degradado */
+.accasoft-gradient {
+    /* Degradado modo oscuro */
+    background: linear-gradient(
+        90deg,
+        #3e4095 0%,
+        #ffffff 40%,
+        #ffffff 60%,
+        #9ccb48 100%
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation:
+        shine-wave 6s ease-in-out infinite,
+        pulse-energy 4s ease-in-out infinite;
+    display: inline-block;
+}
+
+/* Degradado modo claro */
+body.light-mode .accasoft-gradient {
+    background: linear-gradient(
+        90deg,
+        #3e4095 0%,
+        #000000 40%,
+        #000000 60%,
+        #9ccb48 100%
+    );
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation:
+        shine-wave 6s ease-in-out infinite,
+        pulse-energy 4s ease-in-out infinite;
+}
+
+@keyframes shine-wave {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes pulse-energy {
+    0%,
+    100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0px rgba(62, 64, 149, 0));
+    }
+    50% {
+        transform: scale(1.02);
+        filter: drop-shadow(0 0 15px rgba(62, 64, 149, 0.4));
+    }
+}
+
+#services-section {
+    position: relative;
+    background: linear-gradient(180deg, #0f172a 0%,  #000000 100%);
+    transition: background-color 0.5s ease;
+}
+
+body.light-mode #services-section {
+    background: linear-gradient(180deg, #f7f2fa 0%,  #fff 100%);
+}
+.group {
+    transition: background-color 0.5s ease;
+}
+
+body.light-mode .group {
+    background: rgba(0, 0, 0, 0.03); 
+    
+}
+
+/* Títulos de las tarjetas (H4) */
+.service-card h4 {
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+/* Párrafos de las tarjetas */
+.service-card p {
+    color: #9ca3af; 
+    transition: color 0.3s ease;
+}
+
+/* CAMBIOS PARA MODO CLARO */
+body.light-mode .service-card h4 {
+    color: #000000; 
+}
+
+body.light-mode .service-card p {
+    color: #4b5563; 
+}
+
+/* Sección de Marketing Digital */
+#marketing-section {
+    position: relative;
+    background: linear-gradient(180deg, #000000 0%, #1e293b 100%);
+    transition: background 0.5s ease, border-top 0.5s ease;
+}
+
+body.light-mode #marketing-section {
+    background: linear-gradient(180deg, #ffffff 0%, #ffffff 100%);
+    
+}
+#convenios-section {
+    background: rgba(255, 255, 255, 0.03); /* Vidrio oscuro muy sutil */
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 2rem;
+        padding: 4rem 2rem;
+        margin: 0 auto;
+        max-width: 80%; /* Esto controla el ancho al 80% que querías */
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    
+}
+
+body.light-mode #convenios-section h2 {
+    color: #000000;
+}
+
+body.light-mode #convenios-section p {
+    color: #555;
+}
+body.light-mode #convenios-section img {
+    filter: brightness(0) opacity(0.7);
+}
+#convenios-section {
+    transition: all 0.5s ease;
+}
+
+#convenios-section:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Modo claro para las tarjetas */
+body.light-mode #convenios-section  {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode #convenios-section img {
+    filter: brightness(0) opacity(0.7); /* Oscurece los logos si son claros */
+}
+
+body.light-mode #convenios-section h2 {
+    color: #000;
+}
+/* Tamaño fijo y proporcionado para las cards de los logos */
+.convenio-card {
+    background-color: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    width: 280px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 24px;
+}
+
+/* Control de la imagen dentro de la card */
+.convenio-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cambiado a contain para que se vea el logo completo */
+    padding: 10px;
+    display: block;
+    border-radius: 24px;
+}
+
+/* Efecto Hover fluido */
+.convenio-card:hover {
+    transform: translateY(-8px);
+}
+
+.convenio-card:hover img {
+    opacity: 1;
+}
+
+/* Ajuste para Modo Claro */
+body.light-mode .convenio-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+body.light-mode .convenio-card img {
+    filter: none !important;
+    mix-blend-mode: normal !important;
+}
+
+/* Forzar que el contenedor sea blanco sólido SIEMPRE */
+.convenio-card {
+    background-color: #ffffff !important;
+}
+/* --- Footer General --- */
+.site-footer {
+    background: rgba(15, 23, 42, 0.6); /* Color oscuro base con transparencia */
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 5rem;
+    margin-top: 5rem;
+    color: #94a3b8;
+}
+
+.footer-grid-layout {
+    display: grid;
+    /* Esto crea 4 columnas iguales y asegura el espacio entre ellas */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 40px;
+    align-items: start;
+}
+
+.footer-brand-column { padding-right: 2rem; }
+img {
+    max-width: 100%;
+    height: auto;
+}
+.footer-logo-img {
+    height: 60px;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+/* --- Indicadores de Status --- */
+.footer-compliance-status { margin-top: 1.5rem; }
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    color: #9ccb48;
+}
+.dot-live {
+    width: 8px;
+    height: 8px;
+    background: #9ccb48;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #9ccb48;
+}
+
+/* --- Tipografía --- */
+.footer-links-column h4 {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+}
+
+.footer-links-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links-column ul li { margin-bottom: 0.8rem; }
+.footer-links-column a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+.footer-links-column a:hover { color: #9ccb48; }
+
+/* --- Barra Legal --- */
+.footer-legal-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem 0;
+    font-size: 0.8rem;
+}
+
+.legal-bar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+
+.legal-links a {
+    margin-left: 1.5rem;
+    color: #64748b;
+    text-decoration: none;
+}
+
+/* --- MODO CLARO --- */
+body.light-mode .site-footer {
+    background: rgba(247, 242, 250, 0.8);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .site-footer h4 { color: #000; }
+body.light-mode .footer-links-column a { color: #4b5563; }
+.container {
+    max-width: 100%; /* Ajusta según tu diseño */
+    margin: 0 auto;    /* Esto centra todo el bloque */
+    padding: 0 20px;
+}
+/* Asegura que el contenedor tenga el ancho correcto para el movimiento */
+#theme-toggle {
+    width: 56px; /* Ajustado para acomodar el movimiento de 24px */
+    transition: background-color 0.3s ease;
+}
+
+/* Color de fondo del toggle en modo claro */
+body.light-mode #theme-toggle {
+    background-color: #9ccb48;
+}
+
+/* El círculo se desplaza 24px en modo claro */
+#toggle-circle {
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+/* Esto evita que los elementos del grid se expandan más allá de lo debido */
+.grid {
+    display: grid;
+    align-items: stretch; /* Esto hace que todas las tarjetas midan lo mismo */
+}
+/* Asegura que el contenedor del logo sea siempre blanco y limpio */
+.logo-container {
+    background-color: #ffffff !important;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+/* Modo claro específico para las cards de convenios */
+body.light-mode .bg-slate-900 {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+body.light-mode .text-white {
+    color: #000000 !important;
+}
+
+body.light-mode .text-gray-400 {
+    color: #64748b !important;
+}
+body.light-mode .text-gray-300 {
+    color: #000 !important;
+}
+/* Corrección para el contenedor del menú móvil en modo claro */
+body.light-mode .mobile-menu, 
+body.light-mode .menu-mobile, 
+body.light-mode #mobile-menu {
+    background-color: #f7f2fa !important; /* Mismo fondo que tu modo claro */
+    color: #000000 !important;
+}
+
+/* Corrección para los enlaces dentro del menú móvil en modo claro */
+body.light-mode .mobile-menu a, 
+body.light-mode .menu-mobile a, 
+body.light-mode #mobile-menu a {
+    color: #000000 !important;
+}
+/* Estilos para la nueva sección de trayectoria */
+body.light-mode .bg-white\/5 {
+    background: rgba(0, 0, 0, 0.03) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-mode .text-white {
+    color: #000 !important;
+}
+
+body.light-mode .text-gray-500 {
+    color: #6b7280 !important;
+}
+.logo-carousel-container {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.logo-track {
+    display: inline-flex;
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Modo claro para los logos */
+body.light-mode .logo-track img {
+    filter: grayscale(1) invert(0.5); /* Ajuste de contraste para fondo claro */
+}
+/* Configuración acelerada del aura */
+.aura-halo {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+        circle, 
+        rgba(156, 203, 72, 0.2) 0%, 
+        transparent 60%
+    );
+    /* Velocidad aumentada de 8s a 4s para un movimiento más activo */
+    animation: move-aura 4s infinite linear;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes move-aura {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(15%, 15%); }
+    50% { transform: translate(0, 25%); }
+    75% { transform: translate(-15%, 15%); }
+    100% { transform: translate(0, 0); }
+}
+/* --- CORRECCIÓN DE LEGIBILIDAD EN MODO CLARO --- */
+
+/* 1. Fondo de la tarjeta en modo claro */
+body.light-mode .aura-container {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+/* 2. Títulos y texto en modo claro */
+body.light-mode .aura-container h2,
+body.light-mode .aura-container span,
+body.light-mode .aura-container p {
+    color: #1e293b !important; /* Un gris muy oscuro (casi negro) para mejor contraste */
+}
+
+/* 3. Ajuste para el texto secundario (gray-500) */
+body.light-mode .aura-container .text-gray-500 {
+    color: #475569 !important;
+}
+
+/* 4. Mantenemos el color verde en ambos modos (opcional, si quieres que resalte) */
+.aura-container .text-{
+    color: #9ccb48 !important; /* Mantiene el verde corporativo */
+}
+
+/* 5. Asegurar que los números de las estadísticas se lean bien */
+body.light-mode .aura-container .text-white {
+    color: #0f172a !important;
+}
+/* Estilo base para el bloque en modo oscuro */
+.light-mode-block {
+    background-color: rgba(15, 23, 42, 0.5); /* Color oscuro */
+}
+
+/* Ajustes para modo claro */
+body.light-mode .light-mode-block {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+body.light-mode .light-mode-block h3 {
+    color: #000000 !important;
+}
+
+body.light-mode .light-mode-block p {
+    color: #4b5563 !important;
+}
+/* Sección contenedora */
+.grid-background {
+    /* Cambiamos el azul oscuro por negro */
+    background-color: #121212 !important; 
+    
+    /* Mantenemos la rejilla, ajustando la opacidad para que se vea bien sobre negro */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: grid-move 20s linear infinite;
+    position: relative;
+    transition: background-color 0.5s ease;
+}
+
+/* Tarjeta interna */
+.grid-card {
+    background-color: rgba(30, 41, 59, 0.5); /* Color oscuro base para la card */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    transition: all 0.5s ease;
+}
+
+/* Ajustes para Modo Claro */
+body.light-mode .grid-background {
+    background-color: #f8fafc !important; /* Fondo claro */
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+}
+
+body.light-mode .grid-card {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-mode .grid-card h3,
+body.light-mode .grid-card p {
+    color: #1e293b !important;
+}
+/* 1. Definición de la animación (mantenla fuera de los media queries) */
+@keyframes grid-move {
+    from { background-position: 0 0; }
+    to { background-position: 50px 50px; }
+}
+
+/* 2. Sección completa: Fondo base + Rejilla animada */
+.grid-background {
+    background-color: #0f172a; /* Fondo oscuro base */
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 50px 50px;
+    /* Aquí aplicamos la animación que dará movimiento */
+    animation: grid-move 5s linear infinite;
+    transition: background-color 0.5s ease;
+}
+
+/* 3. Ajustes para Modo Claro: Inversión total */
+body.light-mode .grid-background {
+    background-color: #f8fafc !important; /* Fondo claro */
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+}
+/* Asegurar que el título y los textos se adapten en modo claro */
+body.light-mode h2 {
+    color: #000000 !important;
+}
+
+body.light-mode .service-card h4 {
+    color: #000000 !important;
+}
+
+body.light-mode .service-card p {
+    color: #4b5563 !important;
+}
+
+/* El círculo del logo se verá mejor así en ambos modos */
+.service-card .bg-white\/10 {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .service-card .bg-white\/10 {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+}
+/* Ajuste para el botón en Modo Claro */
+body.light-mode .bg-\[#9ccb48\] {
+    background-color: #9ccb48 !important;
+    color: #000000 !important;
+}
+
+/* Base de tarjetas */
+.flag-card-col, .flag-card-ven {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.flag-card-col:hover, .flag-card-ven:hover { transform: translateY(-5px); }
+
+/* Fondo Colombia (Amarillo, Azul, Rojo) */
+.flag-card-col {
+    background: linear-gradient(180deg, #FCD116 0%, #FCD116 50%, #003893 50%, #003893 75%, #CE1126 75%, #CE1126 100%);
+}
+
+/* Fondo Venezuela (Amarillo, Azul, Rojo + Estrellas) */
+.flag-card-ven {
+    background: linear-gradient(180deg, #FCD116 0%, #FCD116 50%, #00247D 50%, #00247D 75%, #CE1126 75%, #CE1126 100%);
+}
+
+/* Oscurecer un poco los colores para que el título blanco sea legible */
+.flag-card-col::after, .flag-card-ven::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); /* Filtro oscuro para resaltar el texto */
+}
+/* Estilos base de tarjetas */
+.flag-card-col, .flag-card-ven {
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Filtro oscuro para legibilidad sobre los colores */
+.flag-card-col::before, .flag-card-ven::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5); /* Oscurece la bandera para el texto blanco */
+}
+
+/* Colombia: Proporción 2:1:1 */
+.flag-col-proportional {
+    background: linear-gradient(90deg, #FCD116 50%, #003893 50%, #003893 75%, #CE1126 75%);
+}
+
+/* Venezuela: Proporción 1:1:1 */
+.flag-ven-proportional {
+    background: linear-gradient(90deg, #FCD116 33.3%, #00247D 33.3%, #00247D 66.6%, #CE1126 66.6%);
+}
+
+/* Posicionamiento de las estrellas en la franja azul */
+.stars-container {
+    position: absolute;
+    top: 42%; /* Centrado en la franja azul */
+    right: 20px;
+    color: white;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    z-index: 1;
+}
+/* Asegurar espaciado entre secciones de enlaces */
+.footer-links-column h4 {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+/* Estilo para los iconos sociales */
+.footer-social-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.social-icon {
+    font-size: 1.25rem;
+    color: #94a3b8;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+    color: #9ccb48; /* Tu color corporativo */
+}
+/* --- CORRECCIÓN RESPONSIVE COMPLETA --- */
+
+/* 1. Ajustes para tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .footer-grid-layout {
+        grid-template-columns: repeat(2, 1fr) !important; /* Pasamos de 4 a 2 columnas */
+    }
+}
+
+/* 2. Ajustes para móviles (max-width: 768px) */
+@media (max-width: 768px) {
+    .accasoft-gradient {
+        font-size: 3.5rem !important; /* Título principal más pequeño */
+    }
+    
+    .cert-card {
+        min-height: auto !important; /* Eliminamos la altura fija restrictiva */
+        padding: 2rem !important;
+    }
+
+    .footer-grid-layout {
+        grid-template-columns: 1fr !important; /* Footer en 1 sola columna */
+        gap: 30px !important;
+    }
+
+    .legal-bar-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+}
+
+/* 3. Asegurar que las tarjetas de servicios y albaranes fluyan */
+@media (max-width: 640px) {
+    .service-card-3d, .service-card {
+        padding: 1.5rem !important;
+    }
+}
+@media (max-width: 768px) {
+    .container, .legal-bar-wrapper {
+        max-width: 100% !important;
+        width: 95% !important; /* Más espacio en móviles */
+    }
+}
+.glass-nav {
+    background: rgba(15, 23, 42, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Ajuste específico para el logo y hamburguesa en móvil */
+@media (max-width: 768px) {
+    .glass-nav {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+}
