@@ -272,55 +272,79 @@
             50% { transform: rotate(180deg) scale(1.2); }
             100% { transform: rotate(360deg) scale(1); }
         }
-        /* --- NAVBAR PREMIUM ESTILOS --- */
+        /* --- NUEVO NAVBAR --- */
         .site-header {
-            position: sticky;
-            top: 0;
+            background: #ffffff;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 15px 0;
+            position: relative;
             z-index: 1000;
-            padding: 20px 0;
-            background: linear-gradient(180deg, #121212, rgba(150, 150, 150, 0.5) 100%);
-            backdrop-filter: blur(20px);
-            
         }
         
-        .nav-wrapper {
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
-        .logo-img { height: 32px; width: auto; }
+        .nav-spacer, .menu-toggle {
+            width: 40px; /* Ancho fijo para equilibrar el logo */
+        }
         
-        .nav-menu {
+        .logo-img {
+            height: 35px; /* Ajusta este valor al tamaño deseado */
+            width: auto;
+            display: block;
+        }
+        
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1d1d1f;
             display: flex;
+            justify-content: flex-end;
+        }
+        
+        /* Menú móvil */
+        .mobile-menu {
+            display: none;
+            background: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu ul {
             list-style: none;
-            gap: 40px;
         }
         
-        .nav-menu a {
+        .mobile-menu li {
+            margin: 20px 0;
+        }
+        
+        .mobile-menu a {
+            color: #1d1d1f;
             text-decoration: none;
-            color: var(--text);
+            font-size: 1.1rem;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
         }
         
-        .nav-menu a:hover { color: var(--accent); }
-        
-        .btn-cta-nav {
-            background: var(--text);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: transform 0.3s, background 0.3s;
-        }
-        
-        .btn-cta-nav:hover {
-            transform: translateY(-2px);
-            background: var(--accent);
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            /* Mantenemos el diseño centrado */
+            .nav-container {
+                display: flex;
+                justify-content: space-between;
+            }
         }
     </style>
 </head>
@@ -331,21 +355,25 @@
     </div>
     <!-- NAVBAR PREMIUM STYLE -->
     <header class="site-header">
-      <div class="container nav-wrapper">
-        <a href="/" class="logo" aria-label="Accasoft Inicio">
+      <div class="nav-container">
+        <div class="nav-spacer"></div>
+        
+        <a href="/" class="logo">
           <img src="img/logo1.png" alt="Accasoft Logo" class="logo-img">
         </a>
-        <nav aria-label="Navegación principal">
-          <ul class="nav-menu">
-            <li><a href="#modulos">Módulos ERP</a></li>
-            <li><a href="#beneficios">Beneficios</a></li>
-            <li><a href="#infraestructura">Infraestructura</a></li>
-          </ul>
-        </nav>
-        <div class="nav-actions">
-          <a href="#contacto" class="btn-cta-nav">Solicitar Información</a>
-        </div>
+        
+        <button class="menu-toggle" aria-label="Abrir menú">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
+      
+      <nav class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html#services-section">Módulos ERP</a></li>
+          <li><a href="index.html#contact">Contacto</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main class="container">
@@ -450,6 +478,13 @@
                 card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0px)`;
             });
         });
+        const toggle = document.querySelector('.menu-toggle');
+            const menu = document.getElementById('mobile-menu');
+        
+            toggle.addEventListener('click', () => {
+                menu.classList.toggle('active');
+            });
+        
     </script>
 </body>
 </html>
