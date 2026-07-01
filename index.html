@@ -2,43 +2,77 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script src="https://cdn.tailwindcss.com"></script>
         <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-    <nav class="fixed w-full z-50 glass-nav px-4 py-6 md:py-4 flex flex-wrap justify-between items-center transition-all duration-300">
-        
-        <div class="flex-1 flex justify-center md:justify-start">
-            <img src="img/logo1.png" alt="Logo" class="h-12 md:h-14 w-auto" />
+        <nav
+            class="fixed w-full z-50 glass-nav px-4 py-6 md:py-4 flex flex-wrap justify-between items-center transition-all duration-300"
+        >
+            <div class="flex-1 flex justify-center md:justify-start">
+                <img
+                    src="img/logo1.png"
+                    alt="Logo"
+                    class="h-12 md:h-14 w-auto"
+                />
+            </div>
+
+            <button
+                id="menu-btn"
+                class="md:hidden text-white focus:outline-none absolute right-4"
+            >
+                <svg
+                    class="w-10 h-10"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h16m-7 6h7"
+                    ></path>
+                </svg>
+            </button>
+
+            <div class="hidden md:flex gap-8 text-sm font-medium">
+                <a href="#contacto" class="hover:text-[#9ccb48]">Nosotros</a>
+                <a href="#services-section" class="hover:text-[#9ccb48]"
+                    >Servicios</a
+                >
+                <a href="#convenios-section" class="hover:text-[#9ccb48]"
+                    >Convenios</a
+                >
+                <a href="#contact" class="hover:text-[#9ccb48]">Contacto</a>
+            </div>
+
+            <div
+                id="theme-toggle"
+                class="hidden md:flex w-14 h-8 bg-gray-700 rounded-full p-1 cursor-pointer items-center ml-4"
+            >
+                <div
+                    id="toggle-circle"
+                    class="w-6 h-6 bg-white rounded-full"
+                ></div>
+            </div>
+        </nav>
+
+        <div
+            id="mobile-menu"
+            class="hidden md:hidden fixed top-24 left-0 w-full bg-[#0f172a]/95 backdrop-blur-lg p-8 flex flex-col gap-6 text-center text-lg border-b border-white/10 z-40"
+        >
+            <a href="#nosotros" class="block py-2">Nosotros</a>
+            <a href="#services-section" class="block py-2">Servicios</a>
+            <a href="#convenios-section" class="block py-2">Convenios</a>
+            <a href="#contact" class="block py-2">Contacto</a>
         </div>
-        
-        <button id="menu-btn" class="md:hidden text-white focus:outline-none absolute right-4">
-            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-            </svg>
-        </button>
-    
-        <div class="hidden md:flex gap-8 text-sm font-medium">
-            <a href="#contacto" class="hover:text-[#9ccb48]">Nosotros</a>
-            <a href="#services-section" class="hover:text-[#9ccb48]">Servicios</a>
-            <a href="#convenios-section" class="hover:text-[#9ccb48]">Convenios</a>
-            <a href="#contact" class="hover:text-[#9ccb48]">Contacto</a>
-        </div>
-    
-        <div id="theme-toggle" class="hidden md:flex w-14 h-8 bg-gray-700 rounded-full p-1 cursor-pointer items-center ml-4">
-            <div id="toggle-circle" class="w-6 h-6 bg-white rounded-full"></div>
-        </div>
-    </nav>
-    
-    <div id="mobile-menu" class="hidden md:hidden fixed top-24 left-0 w-full bg-[#0f172a]/95 backdrop-blur-lg p-8 flex flex-col gap-6 text-center text-lg border-b border-white/10 z-40">
-        <a href="#nosotros" class="block py-2">Nosotros</a>
-        <a href="#services-section" class="block py-2">Servicios</a>
-        <a href="#convenios-section" class="block py-2">Convenios</a>
-        <a href="#contact" class="block py-2">Contacto</a>
-    </div>
         <header
             class="h-screen flex flex-col justify-center items-center text-center px-6"
         >
@@ -70,68 +104,110 @@
             </div>
         </header>
         <section class="py-24 px-6 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto px-4">
-                
-                <div class="cert-card hover:border-[#9ccb48] cursor-pointer" onclick="validarRegistro()">
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto px-4"
+            >
+                <div
+                    class="cert-card hover:border-[#9ccb48] cursor-pointer"
+                    onclick="validarRegistro()"
+                >
                     <div class="cert-card-img-wrapper">
-                        <img src="img/seniat.png" alt="SENIAT">
+                        <img src="img/seniat.png" alt="SENIAT" />
                     </div>
-                    <h4 class="text-2xl font-bold text-white mb-2 body-text-color">SENIAT</h4>
-                    <p class="text-gray-400">Homologación oficial para gestión fiscal y facturación.</p>
-                    <p class="text-gray-400">Homologación oficial: <strong>J298872101</strong></p>
-                    <p class="text-sm text-[#9ccb48] mt-2 italic">Haz clic para verificar</p>
+                    <h4
+                        class="text-2xl font-bold text-white mb-2 body-text-color"
+                    >
+                        SENIAT
+                    </h4>
+                    <p class="text-gray-400">
+                        Homologación oficial para gestión fiscal y facturación.
+                    </p>
+                    <p class="text-gray-400">
+                        Homologación oficial: <strong>J298872101</strong>
+                    </p>
+                    <p class="text-sm text-[#9ccb48] mt-2 italic">
+                        Haz clic para verificar
+                    </p>
                 </div>
-                
+
                 <script>
-                function validarRegistro() {
-                    const registro = "J298872101";
-                    
-                    // 1. Copiar al portapapeles para facilitar la búsqueda
-                    navigator.clipboard.writeText(registro).then(() => {
-                        // 2. Notificación visual sutil (opcional)
-                        console.log("ID copiado: " + registro);
-                    });
-                    
-                    // 3. Abrir la web del SENIAT
-                    window.open("https://seniatenlinea.seniat.gob.ve/tributos-software-facturacion/", "_blank");
-                }
+                    function validarRegistro() {
+                        const registro = "J298872101";
+
+                        // 1. Copiar al portapapeles para facilitar la búsqueda
+                        navigator.clipboard.writeText(registro).then(() => {
+                            // 2. Notificación visual sutil (opcional)
+                            console.log("ID copiado: " + registro);
+                        });
+
+                        // 3. Abrir la web del SENIAT
+                        window.open(
+                            "https://seniatenlinea.seniat.gob.ve/tributos-software-facturacion/",
+                            "_blank",
+                        );
+                    }
                 </script>
-        
+
                 <div class="cert-card hover:border-[#9ccb48]">
                     <div class="cert-card-img-wrapper">
-                        <img src="img/dian.png" alt="DIAN">
+                        <img src="img/dian.png" alt="DIAN" />
                     </div>
-                    <h4 class="text-2xl font-bold text-white mb-2 body-text-color">DIAN</h4>
-                    <p class="text-gray-400">Cumplimiento normativo para integración en Colombia. Facturación Electronica Directa a la DIAN.</p>
+                    <h4
+                        class="text-2xl font-bold text-white mb-2 body-text-color"
+                    >
+                        DIAN
+                    </h4>
+                    <p class="text-gray-400">
+                        Cumplimiento normativo para integración en Colombia.
+                        Facturación Electronica Directa a la DIAN.
+                    </p>
                 </div>
-        
             </div>
         </section>
         <section class="py-24 px-6 relative z-10">
-            <div class="max-w-4xl mx-auto aura-container bg-slate-900/50 border border-white/10 rounded-3xl p-12 text-center relative overflow-hidden transition-colors duration-500">
-                
+            <div
+                class="max-w-4xl mx-auto aura-container bg-slate-900/50 border border-white/10 rounded-3xl p-12 text-center relative overflow-hidden transition-colors duration-500"
+            >
                 <div class="aura-halo"></div>
-                
+
                 <div class="relative z-10">
-                    <div class="inline-block p-4 bg-[#9ccb48]/10 rounded-full mb-6">
+                    <div
+                        class="inline-block p-4 bg-[#9ccb48]/10 rounded-full mb-6"
+                    >
                         <span class="text-5xl">🏆</span>
                     </div>
                     <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                        <span class="text-[#9ccb48]">+20 años</span> liderando el mercado
+                        <span class="text-[#9ccb48]">+20 años</span> liderando
+                        el mercado
                     </h2>
-                    <p class="text-gray-400 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-                        Más de dos décadas transformando negocios con soluciones robustas, seguras y diseñadas para crecer.
+                    <p
+                        class="text-gray-400 text-lg md:text-xl mb-8 max-w-2xl mx-auto"
+                    >
+                        Más de dos décadas transformando negocios con soluciones
+                        robustas, seguras y diseñadas para crecer.
                     </p>
-                    
+
                     <div class="flex flex-wrap justify-center gap-8">
                         <div class="flex flex-col">
-                            <span class="text-3xl font-bold text-white">500+</span>
-                            <span class="text-sm text-gray-500 uppercase tracking-widest">Clientes Satisfechos</span>
+                            <span class="text-3xl font-bold text-white"
+                                >500+</span
+                            >
+                            <span
+                                class="text-sm text-gray-500 uppercase tracking-widest"
+                                >Clientes Satisfechos</span
+                            >
                         </div>
-                        <div class="w-px h-12 bg-white/10 hidden md:block"></div>
+                        <div
+                            class="w-px h-12 bg-white/10 hidden md:block"
+                        ></div>
                         <div class="flex flex-col">
-                            <span class="text-3xl font-bold text-white">100%</span>
-                            <span class="text-sm text-gray-500 uppercase tracking-widest">Compromiso Legal</span>
+                            <span class="text-3xl font-bold text-white"
+                                >100%</span
+                            >
+                            <span
+                                class="text-sm text-gray-500 uppercase tracking-widest"
+                                >Compromiso Legal</span
+                            >
                         </div>
                     </div>
                 </div>
@@ -150,7 +226,9 @@
                     Nuestras Soluciones
                 </h3>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
                     <div
                         class="service-card bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl hover:border-[#3e4095]/50 transition-all duration-500 group"
                     >
@@ -162,8 +240,10 @@
                             Controle sus procesos de producción con un software
                             adaptado.
                         </p>
-                        <a href="produccion.html" 
-                           class="block text-center w-full py-3 rounded-xl bg-[#3e4095]/20 text-[#9ccb48] hover:bg-[#3e4095] hover:text-white transition-all no-underline">
+                        <a
+                            href="produccion.html"
+                            class="block text-center w-full py-3 rounded-xl bg-[#3e4095]/20 text-[#9ccb48] hover:bg-[#3e4095] hover:text-white transition-all no-underline"
+                        >
                             Leer más
                         </a>
                     </div>
@@ -178,8 +258,10 @@
                             Administre su hotel o cadena hotelera de manera
                             eficiente.
                         </p>
-                        <a href="hotel.html" 
-                           class="block text-center w-full py-3 rounded-xl bg-[#3e4095]/20 text-[#9ccb48] hover:bg-[#3e4095] hover:text-white transition-all no-underline">
+                        <a
+                            href="hotel.html"
+                            class="block text-center w-full py-3 rounded-xl bg-[#3e4095]/20 text-[#9ccb48] hover:bg-[#3e4095] hover:text-white transition-all no-underline"
+                        >
                             Leer más
                         </a>
                     </div>
@@ -193,8 +275,10 @@
                         <p class="text-gray-400 mb-6 text-sm">
                             Facture y controle inventarios en tiempo real.
                         </p>
-                        <a href="facturacion.html" 
-                           class="block text-center w-full py-3 rounded-xl bg-[#3e4095]/20 text-[#9ccb48] hover:bg-[#3e4095] hover:text-white transition-all no-underline">
+                        <a
+                            href="facturacion.html"
+                            class="block text-center w-full py-3 rounded-xl bg-[#3e4095]/20 text-[#9ccb48] hover:bg-[#3e4095] hover:text-white transition-all no-underline"
+                        >
                             Leer más
                         </a>
                     </div>
@@ -208,8 +292,10 @@
                         <p class="text-gray-400 mb-6 text-sm">
                             Gestione ingresos, egresos y balances con precisión.
                         </p>
-                        <a href="contable.html" 
-                           class="block text-center w-full py-3 rounded-xl bg-[#3e4095]/20 text-[#9ccb48] hover:bg-[#3e4095] hover:text-white transition-all no-underline">
+                        <a
+                            href="contable.html"
+                            class="block text-center w-full py-3 rounded-xl bg-[#3e4095]/20 text-[#9ccb48] hover:bg-[#3e4095] hover:text-white transition-all no-underline"
+                        >
                             Leer más
                         </a>
                     </div>
@@ -223,8 +309,10 @@
                         <p class="text-gray-400 mb-6 text-sm">
                             Ideal para restaurantes, bares y cafeterías.
                         </p>
-                        <a href="gourmet.html" 
-                           class="block text-center w-full py-3 rounded-xl bg-[#3e4095]/20 text-[#9ccb48] hover:bg-[#3e4095] hover:text-white transition-all no-underline">
+                        <a
+                            href="gourmet.html"
+                            class="block text-center w-full py-3 rounded-xl bg-[#3e4095]/20 text-[#9ccb48] hover:bg-[#3e4095] hover:text-white transition-all no-underline"
+                        >
                             Leer más
                         </a>
                     </div>
@@ -238,24 +326,30 @@
                         <p class="text-gray-400 mb-6 text-sm">
                             Optimice la gestión de recursos humanos.
                         </p>
-                        <a href="nomina.html" 
-                           class="block text-center w-full py-3 rounded-xl bg-[#3e4095]/20 text-[#9ccb48] hover:bg-[#3e4095] hover:text-white transition-all no-underline">
+                        <a
+                            href="nomina.html"
+                            class="block text-center w-full py-3 rounded-xl bg-[#3e4095]/20 text-[#9ccb48] hover:bg-[#3e4095] hover:text-white transition-all no-underline"
+                        >
                             Leer más
                         </a>
                     </div>
-                    
                 </div>
             </div>
-            
         </section>
         <section class="py-20 px-6 grid-background">
             <div class="max-w-3xl mx-auto grid-card rounded-2xl p-10">
                 <div class="flex items-center gap-4 mb-6">
                     <span class="text-4xl">⚡</span>
-                    <h3 class="text-2xl font-bold text-white tracking-tight">Facturación Electrónica Integrada</h3>
+                    <h3 class="text-2xl font-bold text-white tracking-tight">
+                        Facturación Electrónica Integrada
+                    </h3>
                 </div>
                 <p class="text-gray-400 text-lg leading-relaxed">
-                    Cumpla con todas las normativas fiscales vigentes sin complicaciones. Nuestro sistema incluye un módulo nativo de facturación electrónica que garantiza la emisión, validación y envío de documentos tributarios de forma automática, segura y 100% digital.
+                    Cumpla con todas las normativas fiscales vigentes sin
+                    complicaciones. Nuestro sistema incluye un módulo nativo de
+                    facturación electrónica que garantiza la emisión, validación
+                    y envío de documentos tributarios de forma automática,
+                    segura y 100% digital.
                 </p>
             </div>
         </section>
@@ -271,7 +365,9 @@
                     Marketing Digital
                 </h3>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
                     <!-- Tarjeta 1: Posicionamiento de Marca -->
                     <div
                         class="service-card-3d bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-3xl transition-all duration-500 cursor-pointer group"
@@ -421,7 +517,9 @@
                     Gestión de Albaranes
                 </h3>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
                     <!-- Tarjeta 1: Gestión Eficiente -->
                     <div
                         class="service-card-3d bg-white/5 backdrop-blur-xl border border-white/10 p-10 rounded-3xl transition-all duration-500 cursor-pointer group"
@@ -542,69 +640,179 @@
         <section class="py-20 px-6 max-w-7xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <!-- Columna Izquierda: Video -->
-                <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10">
+                <div
+                    class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10"
+                >
                     <!-- Representación del contenedor de video -->
-                    <div class="aspect-video bg-gray-900 flex items-center justify-center">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/J3rQkRYQn38?si=7Ppu2g7qJF25Py3N" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <div
+                        class="aspect-video bg-gray-900 flex items-center justify-center"
+                    >
+                        <iframe
+                            width="560"
+                            height="315"
+                            src="https://www.youtube.com/embed/J3rQkRYQn38?si=7Ppu2g7qJF25Py3N"
+                            title="YouTube video player"
+                            frameborder="0"
+                            allow="
+                                accelerometer;
+                                autoplay;
+                                clipboard-write;
+                                encrypted-media;
+                                gyroscope;
+                                picture-in-picture;
+                                web-share;
+                            "
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen
+                        ></iframe>
                     </div>
                 </div>
-        
+
                 <!-- Columna Derecha: Descripción -->
                 <div>
-                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Presentando Accasoft</h2>
+                    <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
+                        Presentando Accasoft
+                    </h2>
                     <p class="text-gray-400 text-lg mb-8 leading-relaxed">
-                        Es un Programa ERP (Sistema de Planificación de Recursos Empresariales) que integra e interactúa con todos los dispositivos electrónicos denominados por el gobierno como tarjetas fiscales, implantados dentro de las impresoras de facturación o sistema POS cajón monedero, básculas electrónicas, lectores de código de barras, lectores de bandas magnéticas, monitores touch, etc.
+                        Es un Programa ERP (Sistema de Planificación de Recursos
+                        Empresariales) que integra e interactúa con todos los
+                        dispositivos electrónicos denominados por el gobierno
+                        como tarjetas fiscales, implantados dentro de las
+                        impresoras de facturación o sistema POS cajón monedero,
+                        básculas electrónicas, lectores de código de barras,
+                        lectores de bandas magnéticas, monitores touch, etc.
                     </p>
-                    
                 </div>
             </div>
         </section>
         <section class="py-20 px-6 overflow-hidden">
             <div class="max-w-5xl mx-auto text-center mb-12">
-                <h3 class="text-2xl font-bold text-white mb-4">Empresas que impulsan su éxito con Accasoft</h3>
-                <p class="text-gray-400">Aliados estratégicos que confían en nuestra tecnología.</p>
+                <h3 class="text-2xl font-bold text-white mb-4">
+                    Empresas que impulsan su éxito con Accasoft
+                </h3>
+                <p class="text-gray-400">
+                    Aliados estratégicos que confían en nuestra tecnología.
+                </p>
             </div>
-            
-            <div class="logo-carousel-container max-w-5xl mx-auto opacity-70 hover:opacity-100 transition-opacity duration-500">
+
+            <div
+                class="logo-carousel-container max-w-5xl mx-auto opacity-70 hover:opacity-100 transition-opacity duration-500"
+            >
                 <div class="logo-track flex gap-16 items-center">
-                    <img src="img/logo1.png" alt="Empresa 1" class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300">
-                    <img src="img/logo2.png" alt="Empresa 2" class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300">
-                    <img src="img/logo1.png" alt="Empresa 3" class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300">
-                    <img src="img/logo2.png" alt="Empresa 4" class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300">
-                    <img src="img/logo1.png" alt="Empresa 5" class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300">
-                    </div>
+                    <img
+                        src="img/logo1.png"
+                        alt="Empresa 1"
+                        class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                    />
+                    <img
+                        src="img/logo2.png"
+                        alt="Empresa 2"
+                        class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                    />
+                    <img
+                        src="img/logo1.png"
+                        alt="Empresa 3"
+                        class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                    />
+                    <img
+                        src="img/logo2.png"
+                        alt="Empresa 4"
+                        class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                    />
+                    <img
+                        src="img/logo1.png"
+                        alt="Empresa 5"
+                        class="h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300"
+                    />
+                </div>
             </div>
         </section>
         <section class="py-20 px-6">
             <div class="max-w-6xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-16">Lo que dicen nuestros aliados</h2>
-                
+                <h2
+                    class="text-3xl md:text-4xl font-bold text-white text-center mb-16"
+                >
+                    Lo que dicen nuestros aliados
+                </h2>
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Testimonio 1 -->
-                    <div class="service-card bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-md">
-                        <div class="h-16 w-16 bg-white/10 rounded-full mb-6 flex items-center justify-center overflow-hidden border border-white/10">
-                            <img src="logo-empresa1.png" alt="Empresa 1" class="w-full h-full object-cover">
+                    <div
+                        class="service-card bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-md"
+                    >
+                        <div
+                            class="h-16 w-16 bg-white/10 rounded-full mb-6 flex items-center justify-center overflow-hidden border border-white/10"
+                        >
+                            <img
+                                src="img/Testimo3.jpg"
+                                alt="Empresa 1"
+                                class="w-full h-full object-cover"
+                            />
                         </div>
-                        <p class="text-gray-400 mb-6 italic">"Recomiendo Accasoft, son una empresa con altos estándares de calidad, son muy atentos a prestar un excelente servicio tanto de soporte como post - venta, son muy buenos nos atienden muy bien, en general son el mejor paquete contable para las necesidades de las empresas"</p>
-                        <h4 class="text-white font-bold">Agro Centro | Sogamoso <br>Jose Lesmes | Rep Legal</h4>
+                        <p class="text-gray-400 mb-6 italic">
+                            "Recomiendo Accasoft, son una empresa con altos
+                            estándares de calidad, son muy atentos a prestar un
+                            excelente servicio tanto de soporte como post -
+                            venta, son muy buenos nos atienden muy bien, en
+                            general son el mejor paquete contable para las
+                            necesidades de las empresas"
+                        </p>
+                        <h4 class="text-white font-bold">
+                            Agro Centro | Sogamoso <br />Jose Lesmes | Rep Legal
+                        </h4>
                     </div>
-        
+
                     <!-- Testimonio 2 -->
-                    <div class="service-card bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-md">
-                        <div class="h-16 w-16 bg-white/10 rounded-full mb-6 flex items-center justify-center overflow-hidden border border-white/10">
-                            <img src="logo-empresa2.png" alt="Empresa 2" class="w-full h-full object-cover">
+                    <div
+                        class="service-card bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-md"
+                    >
+                        <div
+                            class="h-16 w-16 bg-white/10 rounded-full mb-6 flex items-center justify-center overflow-hidden border border-white/10"
+                        >
+                            <img
+                                src="img/Testimo1.jpg"
+                                alt="Empresa 2"
+                                class="w-full h-full object-cover"
+                            />
                         </div>
-                        <p class="text-gray-400 mb-6 italic">"Accasoft es parte fundamental en las funciones de nuestra empresa, el apoyo por parte de los ingenieros es oportuno y conciso, el programa es excelente, se cuenta con constante apoyo en capacitación y soporte, !Continuo con ustedes por su buen servicio!"</p>
-                        <h4 class="text-white font-bold">Walldo's | Boyacá<br> Facturación electrónica</h4>
+                        <p class="text-gray-400 mb-6 italic">
+                            "Accasoft es parte fundamental en las funciones de
+                            nuestra empresa, el apoyo por parte de los
+                            ingenieros es oportuno y conciso, el programa es
+                            excelente, se cuenta con constante apoyo en
+                            capacitación y soporte, !Continuo con ustedes por su
+                            buen servicio!"
+                        </p>
+                        <h4 class="text-white font-bold">
+                            Walldo's | Boyacá<br />
+                            Facturación electrónica
+                        </h4>
                     </div>
-        
+
                     <!-- Testimonio 3 -->
-                    <div class="service-card bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-md">
-                        <div class="h-16 w-16 bg-white/10 rounded-full mb-6 flex items-center justify-center overflow-hidden border border-white/10">
-                            <img src="logo-empresa3.png" alt="Empresa 3" class="w-full h-full object-cover">
+                    <div
+                        class="service-card bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-md"
+                    >
+                        <div
+                            class="h-16 w-16 bg-white/10 rounded-full mb-6 flex items-center justify-center overflow-hidden border border-white/10"
+                        >
+                            <img
+                                src="img/Testimo2.png"
+                                alt="Empresa 3"
+                                class="w-full h-full object-cover"
+                            />
                         </div>
-                        <p class="text-gray-400 mb-6 italic">"Tuvimos la oportunidad de conocer el programa contable de AccaSoft hace dos años, nos pareció de fácil manejo y completo, hemos contado con su apoyo de manera oportuna y rápida, sus funcionarios son colaboradores y siempre están prestos a prestar un buen servicio."</p>
-                        <h4 class="text-white font-bold">Agro Río | Meta<br>Facturación electrónica</h4>
+                        <p class="text-gray-400 mb-6 italic">
+                            "Tuvimos la oportunidad de conocer el programa
+                            contable de AccaSoft hace dos años, nos pareció de
+                            fácil manejo y completo, hemos contado con su apoyo
+                            de manera oportuna y rápida, sus funcionarios son
+                            colaboradores y siempre están prestos a prestar un
+                            buen servicio."
+                        </p>
+                        <h4 class="text-white font-bold">
+                            Agro Río | Meta<br />Facturación electrónica
+                        </h4>
                     </div>
                 </div>
             </div>
@@ -660,152 +868,324 @@
         </section>
         <section class="py-24 px-6 max-w-6xl mx-auto" id="contact">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
                 <!-- Tarjeta Colombia -->
-                <div class="bg-white/5 border border-white/10 rounded-3xl p-8 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-2 flag-col-proportional"></div>
-                    <h3 class="text-3xl font-bold text-white mb-6 mt-4">Colombia</h3>
+                <div
+                    class="bg-white/5 border border-white/10 rounded-3xl p-8 relative overflow-hidden"
+                >
+                    <div
+                        class="absolute top-0 left-0 w-full h-2 flag-col-proportional"
+                    ></div>
+                    <h3 class="text-3xl font-bold text-white mb-6 mt-4">
+                        Colombia
+                    </h3>
                     <div class="space-y-4 text-gray-300">
                         <p><strong>Teléfono:</strong> 313 839 8188</p>
-                        <p><strong>Email:</strong> accasoft.colombia@gmail.com</p>
+                        <p>
+                            <strong>Email:</strong> accasoft.colombia@gmail.com
+                        </p>
                         <p><strong>Soporte:</strong> cima.accasoft@gmail.com</p>
-                        <p class="text-sm pt-4 border-t border-white/10 text-gray-400">Lun-Sáb: 8:00 AM - 6:00 PM</p>
+                        <p
+                            class="text-sm pt-4 border-t border-white/10 text-gray-400"
+                        >
+                            Lun-Sáb: 8:00 AM - 6:00 PM
+                        </p>
                     </div>
                 </div>
-        
+
                 <!-- Tarjeta Venezuela -->
-                <div class="bg-white/5 border border-white/10 rounded-3xl p-8 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-2 flag-ven-proportional flex items-center justify-center">
+                <div
+                    class="bg-white/5 border border-white/10 rounded-3xl p-8 relative overflow-hidden"
+                >
+                    <div
+                        class="absolute top-0 left-0 w-full h-2 flag-ven-proportional flex items-center justify-center"
+                    >
                         <!-- Estrellas blancas centradas en la sección azul -->
-                        <span class="text-[8px] text-white tracking-widest translate-x-[16%]">★★★★★ ★★★</span>
+                        <span
+                            class="text-[8px] text-white tracking-widest translate-x-[16%]"
+                            >★★★★★ ★★★</span
+                        >
                     </div>
-                    <h3 class="text-3xl font-bold text-white mb-6 mt-4">Venezuela</h3>
+                    <h3 class="text-3xl font-bold text-white mb-6 mt-4">
+                        Venezuela
+                    </h3>
                     <div class="space-y-4 text-gray-300">
-                        <p><strong>Teléfono:</strong> [Insertar número]</p>
-                        <p><strong>Email:</strong> accassoft@gmail.com | accasoft@hotmail.com</p>
+                        <p><strong>Teléfono:</strong> +58 414-7463888 | +58 424-7225168</p>
+                        <p>
+                            <strong>Email:</strong> accassoft@gmail.com |
+                            accasoft@hotmail.com
+                        </p>
                         <p><strong>Soporte:</strong>+58 4147463888</p>
-                        <p class="text-sm pt-4 border-t border-white/10 text-gray-400">Lun-Sáb: 8:00 AM - 6:00 PM</p>
+                        <p
+                            class="text-sm pt-4 border-t border-white/10 text-gray-400"
+                        >
+                            Lun-Sáb: 8:00 AM - 6:00 PM
+                        </p>
                     </div>
                 </div>
             </div>
-            <br><br>
-            <form action="https://formspree.io/f/TU_ID_DE_FORMULARIO" method="POST" class="p-6 bg-white/5 rounded-2xl">
-                <!-- Campo oculto para identificar el origen -->
-                <input type="hidden" name="_subject" value="Nueva solicitud de cotización Accasoft">
-            
+            <br /><br />
+            <form id="contactForm" class="p-6 bg-white/5 rounded-2xl">
                 <div class="mb-4">
-                    <label class="block mb-2">Seleccione su país:</label>
-                    <select name="pais" required class="w-full p-2 rounded bg-black border border-white/10 text-white" style="border-radius: 20px;">
-                        <option  value="venezuela">Venezuela</option>
+                    <label class="block mb-2 text-white"
+                        >Seleccione su país:</label
+                    >
+                    <select
+                        id="paisSelect"
+                        name="pais"
+                        required
+                        class="w-full p-2 rounded bg-black border border-white/10 text-white"
+                        style="border-radius: 20px"
+                    >
+                        <option value="venezuela">Venezuela</option>
                         <option value="colombia">Colombia</option>
                     </select>
                 </div>
-            
-                <input style="border-radius: 20px;" type="text" name="nombre" placeholder="Nombre" required class="w-full mb-4 p-2 rounded bg-black border border-white/10 text-white">
-                <input style="border-radius: 20px;" type="email" name="_replyto" placeholder="Correo electrónico" required class="w-full mb-4 p-2 rounded bg-black border border-white/10 text-white">
-                <textarea style="border-radius: 20px;" name="mensaje" placeholder="Detalles de su solicitud" class="w-full mb-4 p-2 rounded bg-black border border-white/10 text-white"></textarea>
-            
-                <button style="border-radius: 20px;" type="submit" class="bg-[#9ccb48] text-black font-bold py-2 px-6 rounded">Solicitar Cotización</button>
+
+                <input
+                    style="border-radius: 20px"
+                    type="text"
+                    name="nombre"
+                    id="nombre"
+                    placeholder="Nombre"
+                    required
+                    class="w-full mb-4 p-2 rounded bg-black border border-white/10 text-white"
+                />
+                <input
+                    style="border-radius: 20px"
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Correo electrónico"
+                    required
+                    class="w-full mb-4 p-2 rounded bg-black border border-white/10 text-white"
+                />
+                <textarea
+                    style="border-radius: 20px"
+                    name="mensaje"
+                    id="mensaje"
+                    placeholder="Detalles de su solicitud"
+                    class="w-full mb-4 p-2 rounded bg-black border border-white/10 text-white"
+                ></textarea>
+
+                <button
+                    style="border-radius: 20px"
+                    type="submit"
+                    class="bg-[#9ccb48] text-black font-bold py-2 px-6 rounded w-full"
+                >
+                    Solicitar Cotización
+                </button>
             </form>
         </section>
-        
+
         <section class="py-20 px-6 max-w-3xl mx-auto">
-            <h3 class="text-3xl font-bold text-white mb-10 text-center">Centro de Ayuda y FAQ</h3>
+            <h3 class="text-3xl font-bold text-white mb-10 text-center">
+                Centro de Ayuda y FAQ
+            </h3>
             <div class="space-y-4">
                 <!-- Ítem 1 -->
-                <details class="bg-white/5 border border-white/10 p-6 rounded-2xl group">
-                    <summary class="font-bold text-[#9ccb48] cursor-pointer list-none flex justify-between items-center">
+                <details
+                    class="bg-white/5 border border-white/10 p-6 rounded-2xl group"
+                >
+                    <summary
+                        class="font-bold text-[#9ccb48] cursor-pointer list-none flex justify-between items-center"
+                    >
                         ¿Accasoft es un software de facturación electrónica?
-                        <span class="group-open:rotate-180 transition-transform">▼</span>
+                        <span class="group-open:rotate-180 transition-transform"
+                            >▼</span
+                        >
                     </summary>
-                    <p class="text-gray-400 mt-4 text-sm">SI, Accasoft es un software de facturación electrónica directa, NO NECESITA INTERMEDIARIOS NI SOBRE COSTOS para cumplir la norma, ademas somos AUTORIZADOS para envio con VALIDACIÓN PREVIA EXIGIDA por la DIAN</p>
+                    <p class="text-gray-400 mt-4 text-sm">
+                        SI, Accasoft es un software de facturación electrónica
+                        directa, NO NECESITA INTERMEDIARIOS NI SOBRE COSTOS para
+                        cumplir la norma, ademas somos AUTORIZADOS para envio
+                        con VALIDACIÓN PREVIA EXIGIDA por la DIAN
+                    </p>
                 </details>
-        
+
                 <!-- Ítem 2 -->
-                <details class="bg-white/5 border border-white/10 p-6 rounded-2xl group">
-                    <summary class="font-bold text-[#9ccb48] cursor-pointer list-none flex justify-between items-center">
+                <details
+                    class="bg-white/5 border border-white/10 p-6 rounded-2xl group"
+                >
+                    <summary
+                        class="font-bold text-[#9ccb48] cursor-pointer list-none flex justify-between items-center"
+                    >
                         ¿Por que es mas fácil usar Accasoft?
-                        <span class="group-open:rotate-180 transition-transform">▼</span>
+                        <span class="group-open:rotate-180 transition-transform"
+                            >▼</span
+                        >
                     </summary>
-                    <p class="text-gray-400 mt-4 text-sm">Porqué Accasoft fue hecho por ing de sistemas y contadores para que fuera usado por personas que no tuvieran conocimientos en estas áreas sino en sus negocios</p>
+                    <p class="text-gray-400 mt-4 text-sm">
+                        Porqué Accasoft fue hecho por ing de sistemas y
+                        contadores para que fuera usado por personas que no
+                        tuvieran conocimientos en estas áreas sino en sus
+                        negocios
+                    </p>
                 </details>
-        
+
                 <!-- Ítem 3 -->
-                <details class="bg-white/5 border border-white/10 p-6 rounded-2xl group">
-                    <summary class="font-bold text-[#9ccb48] cursor-pointer list-none flex justify-between items-center">
+                <details
+                    class="bg-white/5 border border-white/10 p-6 rounded-2xl group"
+                >
+                    <summary
+                        class="font-bold text-[#9ccb48] cursor-pointer list-none flex justify-between items-center"
+                    >
                         ¿Para que tipo de negocio sirve?
-                        <span class="group-open:rotate-180 transition-transform">▼</span>
+                        <span class="group-open:rotate-180 transition-transform"
+                            >▼</span
+                        >
                     </summary>
-                    <p class="text-gray-400 mt-4 text-sm">Accasoft sirve para todo tipo de negocio, Supermercado, Droguería, Papelería, Ferretería, Panadería, Heladería, Hoteles, Restaurante gourmet y de comida rápida, Billares, Empresa de Ornamentación, Bicicleterias, Repuestos motos y carros, etc..</p>
+                    <p class="text-gray-400 mt-4 text-sm">
+                        Accasoft sirve para todo tipo de negocio, Supermercado,
+                        Droguería, Papelería, Ferretería, Panadería, Heladería,
+                        Hoteles, Restaurante gourmet y de comida rápida,
+                        Billares, Empresa de Ornamentación, Bicicleterias,
+                        Repuestos motos y carros, etc..
+                    </p>
                 </details>
-                <details class="bg-white/5 border border-white/10 p-6 rounded-2xl group">
-                    <summary class="font-bold text-[#9ccb48] cursor-pointer list-none flex justify-between items-center">
+                <details
+                    class="bg-white/5 border border-white/10 p-6 rounded-2xl group"
+                >
+                    <summary
+                        class="font-bold text-[#9ccb48] cursor-pointer list-none flex justify-between items-center"
+                    >
                         ¿Puedo unir varias sucursales?
-                        <span class="group-open:rotate-180 transition-transform">▼</span>
+                        <span class="group-open:rotate-180 transition-transform"
+                            >▼</span
+                        >
                     </summary>
-                    <p class="text-gray-400 mt-4 text-sm">SI, Accasoft tiene un sistema robot que le permite trabajar como si estuviera en la NUBE, pero a la velocidad de su equipo de escritorio, PODRÁ SEGUIR TRABAJANDO EN SUS SUCURSALES AUN SIN INTERNET, y cuando tenga conexión se sincroniza automáticamente</p>
+                    <p class="text-gray-400 mt-4 text-sm">
+                        SI, Accasoft tiene un sistema robot que le permite
+                        trabajar como si estuviera en la NUBE, pero a la
+                        velocidad de su equipo de escritorio, PODRÁ SEGUIR
+                        TRABAJANDO EN SUS SUCURSALES AUN SIN INTERNET, y cuando
+                        tenga conexión se sincroniza automáticamente
+                    </p>
                 </details>
-                <details class="bg-white/5 border border-white/10 p-6 rounded-2xl group">
-                    <summary class="font-bold text-[#9ccb48] cursor-pointer list-none flex justify-between items-center">
+                <details
+                    class="bg-white/5 border border-white/10 p-6 rounded-2xl group"
+                >
+                    <summary
+                        class="font-bold text-[#9ccb48] cursor-pointer list-none flex justify-between items-center"
+                    >
                         ¿Puedo usarlo en el celular?
-                        <span class="group-open:rotate-180 transition-transform">▼</span>
+                        <span class="group-open:rotate-180 transition-transform"
+                            >▼</span
+                        >
                     </summary>
-                    <p class="text-gray-400 mt-4 text-sm">SI, Accasoft cuenta con el modulo para distribuidoras, realiza los pedidos y los envía en tiempo real al servidor para ser apartado y facturado, también una APK para cartera donde permitirá hacer cobros, entregar recibo y llevar el control de abonos y saldos en tiempo real</p>
+                    <p class="text-gray-400 mt-4 text-sm">
+                        SI, Accasoft cuenta con el modulo para distribuidoras,
+                        realiza los pedidos y los envía en tiempo real al
+                        servidor para ser apartado y facturado, también una APK
+                        para cartera donde permitirá hacer cobros, entregar
+                        recibo y llevar el control de abonos y saldos en tiempo
+                        real
+                    </p>
                 </details>
             </div>
         </section>
         <footer class="site-footer">
-            <div class="container footer-grid-layout" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem;">
-                
+            <div
+                class="container footer-grid-layout"
+                style="
+                    display: grid;
+                    grid-template-columns: repeat(5, 1fr);
+                    gap: 2rem;
+                "
+            >
                 <!-- Columna 1: Branding -->
                 <div class="footer-brand-column">
-                    <img src="img/logo2.png" alt="Accasoft Logo" class="footer-logo-img">
-                    <p class="brand-description">Ecosistema ERP transfronterizo diseñado para unificar la operación industrial, comercial y hotelera con total cumplimiento fiscal regional.</p>
+                    <img
+                        src="img/logo2.png"
+                        alt="Accasoft Logo"
+                        class="footer-logo-img"
+                    />
+                    <p class="brand-description">
+                        Ecosistema ERP transfronterizo diseñado para unificar la
+                        operación industrial, comercial y hotelera con total
+                        cumplimiento fiscal regional.
+                    </p>
                     <div class="footer-compliance-status">
-                        <div class="status-indicator"><span class="dot-live"></span><span class="text">Sincronizado DIAN 2026</span></div>
-                        <div class="status-indicator"><span class="dot-live"></span><span class="text">Sincronizado SENIAT / IGTF</span></div>
+                        <div class="status-indicator">
+                            <span class="dot-live"></span
+                            ><span class="text">Sincronizado DIAN 2026</span>
+                        </div>
+                        <div class="status-indicator">
+                            <span class="dot-live"></span
+                            ><span class="text"
+                                >Sincronizado SENIAT / IGTF</span
+                            >
+                        </div>
                     </div>
                 </div>
-        
+
                 <!-- Columna 2: Módulos -->
                 <div class="footer-links-column">
                     <h4>Módulos ERP</h4>
                     <ul>
-                        <li><a href="produccion.php">Software Producción</a></li>
+                        <li>
+                            <a href="produccion.php">Software Producción</a>
+                        </li>
                         <li><a href="hotel.php">Software Hotel (PMS)</a></li>
                         <li><a href="pos.php">Puntos de Venta (POS)</a></li>
-                        <li><a href="contable.php">Contabilidad Financiera</a></li>
+                        <li>
+                            <a href="contable.php">Contabilidad Financiera</a>
+                        </li>
                         <li><a href="gourmet.php">Software Gourmet</a></li>
                         <li><a href="nomina.php">Nómina Electrónica</a></li>
                     </ul>
                 </div>
-        
+
                 <!-- Columna 3: Soluciones -->
                 <div class="footer-links-column">
                     <h4>Soluciones Integradas</h4>
                     <ul>
-                        <li><a href="marketing.php">Marketing Digital & CRM</a></li>
-                        <li><a href="albaranes.php">Gestión de Albaranes</a></li>
-                        <li><a href="#convenios">Convenios Institucionales</a></li>
-                        <li><a href="#infraestructura">Infraestructura Cloud</a></li>
+                        <li>
+                            <a href="marketing.php">Marketing Digital & CRM</a>
+                        </li>
+                        <li>
+                            <a href="albaranes.php">Gestión de Albaranes</a>
+                        </li>
+                        <li>
+                            <a href="#convenios">Convenios Institucionales</a>
+                        </li>
+                        <li>
+                            <a href="#infraestructura">Infraestructura Cloud</a>
+                        </li>
                         <li><a href="#seguridad">Seguridad NIIF/IFRS</a></li>
                     </ul>
                 </div>
-        
+
                 <!-- Columna 4: Descargas y Manuales -->
                 <div class="footer-links-column">
                     <ul>
                         <li><a href="AccaSoft.apk">Android</a></li>
-                        <li><a href="Actualizacion.exe">PC - Actualización</a></li>
+                        <li>
+                            <a href="Actualizacion.exe">PC - Actualización</a>
+                        </li>
                     </ul>
                     <h4 class="mt-4">Manuales</h4>
                     <ul>
-                        <li><a href="https://accasoft.com.co/wp/wp-content/uploads/2020/04/ACCACOM-03-2010-20180106WY-MANUAL-ACCASOFT-ERP-SOFTWARE-HOTEL-1.pdf">Manual Hotel</a></li>
-                        <li><a href="https://accasoft.com.co/wp/wp-content/uploads/2020/04/ACCACOM-02-2010-20180106WY-MANUAL-ACCASOFT-ERP-SOFTWARE-ADMINISTRATIVO.pdf">Manual Administrativo</a></li>
-                        <li><a href="https://accasoft.com.co/wp/wp-content/uploads/2020/04/ACCACOM-05-2010-20180106WY-MANUAL-MODULO-CONTABILIDAD-ACCASOFT-ERP-SOFTWARE.pdf">Manual Contabilidad</a></li>
+                        <li>
+                            <a
+                                href="https://accasoft.com.co/wp/wp-content/uploads/2020/04/ACCACOM-03-2010-20180106WY-MANUAL-ACCASOFT-ERP-SOFTWARE-HOTEL-1.pdf"
+                                >Manual Hotel</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://accasoft.com.co/wp/wp-content/uploads/2020/04/ACCACOM-02-2010-20180106WY-MANUAL-ACCASOFT-ERP-SOFTWARE-ADMINISTRATIVO.pdf"
+                                >Manual Administrativo</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://accasoft.com.co/wp/wp-content/uploads/2020/04/ACCACOM-05-2010-20180106WY-MANUAL-MODULO-CONTABILIDAD-ACCASOFT-ERP-SOFTWARE.pdf"
+                                >Manual Contabilidad</a
+                            >
+                        </li>
                     </ul>
                 </div>
-        
+
                 <!-- Columna 5: Compañía y Redes -->
                 <div class="footer-links-column">
                     <h4>Compañía</h4>
@@ -824,9 +1204,8 @@
                         <a href="#"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
-        
             </div>
-        
+
             <!-- Barra Legal -->
             <div class="footer-legal-bar">
                 <div class="container legal-bar-wrapper">
@@ -840,5 +1219,59 @@
             </div>
         </footer>
         <script src="script.js"></script>
+        <script
+            type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+        ></script>
+
+        <script type="text/javascript">
+            // 1. Inicializa con tu Public Key
+            emailjs.init("pLo4s2WlYTmH2SO0l");
+
+            document
+                .getElementById("contactForm")
+                .addEventListener("submit", function (event) {
+                    event.preventDefault();
+
+                    // 2. Definir destino según país
+                    const pais = document.getElementById("paisSelect").value;
+                    const destinatario =
+                        pais === "venezuela"
+                            ? "ruisu.gaming07@gmail.com"
+                            : "ruisugaming07@gmail.com";
+
+                    // 3. Preparar datos
+                    const templateParams = {
+                        to_email: destinatario,
+                        user_name: document.getElementById("nombre").value,
+                        user_email: document.getElementById("email").value,
+                        message: document.getElementById("mensaje").value,
+                        pais_seleccionado: pais,
+                    };
+
+                    // 4. Enviar
+                    emailjs
+                        .send(
+                            "service_vklui6r",
+                            "template_dk1xixb",
+                            templateParams,
+                        )
+                        .then(
+                            () => {
+                                alert(
+                                    "¡Solicitud enviada correctamente a " +
+                                        pais +
+                                        "!",
+                                );
+                                document.getElementById("contactForm").reset();
+                            },
+                            (err) => {
+                                alert(
+                                    "Error al enviar: " + JSON.stringify(err),
+                                );
+                            },
+                        );
+                });
+        </script>
     </body>
 </html>

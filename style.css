@@ -603,6 +603,9 @@ body.light-mode .bg-white\/5 {
 body.light-mode .text-white {
     color: #000 !important;
 }
+body.light-mode .bg-black{
+    color: #fff !important;
+}
 
 body.light-mode .text-gray-500 {
     color: #6b7280 !important;
