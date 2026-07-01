@@ -1219,59 +1219,44 @@
             </div>
         </footer>
         <script src="script.js"></script>
-        <script
-            type="text/javascript"
-            src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-        ></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        
+        <script src="envio.js"></script>
 
         <script type="text/javascript">
-            // 1. Inicializa con tu Public Key
+        (function(){
             emailjs.init("pLo4s2WlYTmH2SO0l");
-
-            document
-                .getElementById("contactForm")
-                .addEventListener("submit", function (event) {
-                    event.preventDefault();
-
-                    // 2. Definir destino según país
-                    const pais = document.getElementById("paisSelect").value;
-                    const destinatario =
-                        pais === "venezuela"
-                            ? "ruisu.gaming07@gmail.com"
-                            : "ruisugaming07@gmail.com";
-
-                    // 3. Preparar datos
-                    const templateParams = {
-                        to_email: destinatario,
-                        user_name: document.getElementById("nombre").value,
-                        user_email: document.getElementById("email").value,
-                        message: document.getElementById("mensaje").value,
-                        pais_seleccionado: pais,
-                    };
-
-                    // 4. Enviar
-                    emailjs
-                        .send(
-                            "service_vklui6r",
-                            "template_dk1xixb",
-                            templateParams,
-                        )
-                        .then(
-                            () => {
-                                alert(
-                                    "¡Solicitud enviada correctamente a " +
-                                        pais +
-                                        "!",
-                                );
-                                document.getElementById("contactForm").reset();
-                            },
-                            (err) => {
-                                alert(
-                                    "Error al enviar: " + JSON.stringify(err),
-                                );
-                            },
-                        );
-                });
+        })();
+        
+        const form = document.getElementById("contactForm");
+        
+        if (form) {
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();
+        
+                // Valores
+                const pais = document.getElementById("paisSelect").value;
+                const destinatario = (pais === "venezuela") ? "ruisu.gaming07@gmail.com" : "ruisugaming07@gmail.com";
+        
+                const templateParams = {
+                    to_email: destinatario,
+                    user_name: document.getElementById("nombre").value,
+                    user_email: document.getElementById("email").value,
+                    message: document.getElementById("mensaje").value,
+                    pais_seleccionado: pais
+                };
+        
+                // Enviar
+                emailjs.send("service_vklui6r", "template_dk1xixb", templateParams)
+                    .then(() => {
+                        alert("¡Solicitud enviada!");
+                        form.reset();
+                    }, (err) => {
+                        alert("Error al enviar. Revisa la consola (F12).");
+                        console.error("Error EmailJS:", err);
+                    });
+            });
+        }
         </script>
     </body>
 </html>
